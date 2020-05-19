@@ -12,6 +12,8 @@ conection.connect(erro => {
         tables.init(conection);
         const app = customExpress();
         const PORT = process.env.PORT || 5000;
+
+        // Makes the server listen to the port defined by PORT
         app.listen(PORT, ()=> console.log(`server started on port ${PORT}`));
     }
 });
