@@ -87,7 +87,7 @@ router.get('/:clientId', (req, res, next) => {
 router.post('/', (req, res, next) => {
     const client= new Client({
         _id: new mongoose.Types.ObjectId(),
-        type: req.body.type,
+        type: 'client',
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         cpf: req.body.cpf,

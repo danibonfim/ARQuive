@@ -29,10 +29,11 @@ function alteraTitulo(event){
 }
 
 //CRIAR TOGGLE DO POPUP
-function toggle(){
+function toggle(elementId){
     let blur= document.getElementsByClassName("blur")[0];
     blur.classList.toggle("active")
 
-    let popup= document.getElementsByClassName("popup")[0];
+    let popup= document.getElementById(elementId);
     popup.classList.toggle("active")
+    console.log(popup)
 }

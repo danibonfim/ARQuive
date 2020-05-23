@@ -11,7 +11,7 @@ function fetchClientById(clientId){
         createPopUp(client);
         projects.innerHTML = '';
         fetchClientProject(clientId);
-        toggle();
+        toggle('popupBD');
       
       })
   .catch(err =>

@@ -106,7 +106,6 @@ router.get('/:projectId', (req, res, next) => {
 //___________________________________________________________
 
 
-
 router.post('/', upload.single('projectImage'), (req, res, next) => {
     console.log(req.file);
     console.log(req.body);
