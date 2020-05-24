@@ -43,7 +43,7 @@
             <div class="content">
                 <div class="content-header">
                     <h2 id="tituloquery">Titulo</h2>
-                    <button class = "yellowBox" id="AddClient" onclick="toggle('popupFormClient')">Adicionar novo cliente</button>
+                    <button class = "yellowBox" id="addData"></button>
                     <form action="" class="campobusca" >
                         <input type="text" class ="yellowBox" id="inputSearch" onkeyup="filterByName()" placeholder = "Filtrar por nome" title = "Digite um nome">
                         <!-- <button type="submit" class="btnbusca" id="btnSearch"><i class="fas fa-search"></i></button> -->
@@ -67,19 +67,17 @@
 
        </div>
 
-
-
 <!-- ADD CLIENT POPUP FORM---------------------------------------------------------------->
-       <div class="container popup" id="popupFormClient">
-           <header>
+       <div class="container popup" id="clientForm">
+           <!-- <header>
                 <h2>Novo Cliente</h2>
-                <button  class="iconButton" id="close" onclick="toggle('popupFormClient')"><i class="fas fa-times-circle"></i></button>
+                <button  class="iconButton" id="close" onclick="toggle('clientForm')"><i class="fas fa-times-circle"></i></button>
            </header>
-           <form action="/clients" method="POST" id="formClient">
+            <form  id="formClient">
                 <div>
                     <label for="firstName">Nome</label>
                     <input type="text" name ="firstName" value="">
-                    
+                        
                     <label for="lastName">Sobrenome</label>
                     <input type="text" name ="lastName" value="">
 
@@ -88,13 +86,13 @@
 
                     <label for="birthDate">Data nascimento</label>
                     <input type="date" name ="birthDate" value="">
-                 </div>
-                 <div>
+                </div>
+                <div>
                     <h3>Contato</h3>
 
                     <label for="areaCode">DDD</label>
                     <input type="number" name ="areaCode" value="">
-                    
+                        
                     <label for="phone">Telefone</label>
                     <input type="number" name ="phone" value="">
 
@@ -103,7 +101,7 @@
 
                     <label for="email">E-mail</label>
                     <input type="text" name ="email" value="">
-                 </div>
+                </div>
 
                 <div>
                     <h3>Endereço</h3>
@@ -124,16 +122,9 @@
                     <input type="number" name ="postalCode" value="">
                 </div>
 
-                <!-- <input type="type" name ="type" value="2"> -->
-
-                <input class = "fatbutton" type="submit" value="submit">
-                
-
-
-            
-            </form>
+                 <button type="submit">Submit</button>    
+            </form> -->
        </div>
-
 
 
 
