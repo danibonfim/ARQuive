@@ -4,8 +4,6 @@ const projects = document.getElementById('projects');
 //-------Container content---------------------------------------------------------------
 
 function fetchClientById(clientId){
-  document.getElementById("myBtn").disabled = true;
-  console.log('CLIENT ID NO FETCHCLIENTBYID ' + clientId)
   fetch('http://localhost:5000/clients/' + clientId)
   .then(response =>
     response.json()
@@ -289,8 +287,6 @@ function failureAlertForm(toggleFormPopupId, messageString, dataTypeAdd, formId,
   });
 
 }
-
-
 
 
 function successAlertForm(toggleFormPopupId, messageString, dataTypeAdd, formId, alertId){
