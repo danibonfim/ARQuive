@@ -8,7 +8,6 @@ function fetchClientById(clientId){
   .then(response =>
     response.json()
       .then(client =>  {
-        console.log('CLIENT NO FETCHCLIENTBY ID'+ client)
         createPopUp(client);
         projects.innerHTML = '';
         fetchClientProject(clientId);
@@ -40,8 +39,12 @@ function createClientCard(client){
       fetchClientById(clientId);
 
   });
-
   container.appendChild(outerDiv);
+
+  if(document.getElementById('infoClient').style.display === "none"){   
+    toggleDisplay('infoClient');
+    toggleDisplay('alertDeleteClient');
+  }
 }
 
 
@@ -255,7 +258,6 @@ function failureAlertForm(toggleFormPopupId, messageString, dataTypeAdd, formId,
   toggleDisplay(formId);
   toggleDisplay(alertId);
   const addAlert = document.getElementById(alertId);
-  console.log(addAlert)
 
   //MESSAGE DISPLAY
   addAlert.innerHTML = `
@@ -265,7 +267,7 @@ function failureAlertForm(toggleFormPopupId, messageString, dataTypeAdd, formId,
     <button class="fatbutton btnAddNew" id="btnAdd${dataTypeAdd}">Tentar novamente</button>
   </div>
   `
-  //BUTTON ADD ANOTHER
+  //BUTTON TRY AGAIN
   const btnAddNew = document.getElementById(`btnAdd${dataTypeAdd}`)
   btnAddNew.addEventListener('click', (event) => {
     document.getElementById(formId).getElementsByTagName('form')[0].reset()
@@ -288,12 +290,10 @@ function failureAlertForm(toggleFormPopupId, messageString, dataTypeAdd, formId,
 
 }
 
-
 function successAlertForm(toggleFormPopupId, messageString, dataTypeAdd, formId, alertId){
   toggleDisplay(formId);
   toggleDisplay(alertId);
   const addAlert = document.getElementById(alertId);
-  console.log(addAlert)
 
   //MESSAGE DISPLAY
   addAlert.innerHTML = `
@@ -329,8 +329,32 @@ function successAlertForm(toggleFormPopupId, messageString, dataTypeAdd, formId,
 
 // DELETE CLIENT -------------------------------------------
 
+
+function alertDelete(toggleDataPopupId, messageString, infoId, alertId){
+  toggleDisplay(infoId);
+  toggleDisplay(alertId);
+  const addAlert = document.getElementById(alertId);
+
+  //MESSAGE DISPLAY
+  addAlert.innerHTML = `
+  <div>
+    <h2 id="messageSuccess">${messageString}"</h2>
+    <a class = "fatbutton" id="outBtn">Sair</a>
+  </div>
+  `
+  //BUTTON OUT 
+  const outBtn= document.getElementById('outBtn');
+  container.innerHTML = '';
+  outBtn.addEventListener('click', () => {
+    toggle(toggleDataPopupId)
+    fetchClientList()
+  });
+}
+
+
+
+
 function deleteClient(clientId){
-  console.log('FUNÇÃO DELETAR')
   const deleteBtn = document.getElementById('deleteBtn');
   deleteBtn.setAttribute('clientId', `${clientId}`)
 
@@ -339,18 +363,20 @@ function deleteClient(clientId){
 
     fetch(`http://localhost:5000/clients/${clientId}`,{
             method: 'delete',
-          })
-    .then(response => response.json())
-    .then(text => {
-      
-      console.log(text);
-
-      toggleDisplay('infoClient');
-
-      console.log('EVENTO DO BOTAO DELETAR')
-      successAlert('alertDeleteClient','Cliente excluido com sucesso!', '');
     })
+    .then(response => response.json()
+      .then(text => {
+        console.log(text)
+        if(response.status === 200){
+          alertDelete('popupBD','Cliente deletado com sucesso!','infoClient','alertDeleteClient');
+        }else{
+          alertDelete('popupBD','Ocorreu um erro ao deletar o cliente','infoClient','alertDeleteClient');
+        }
+      }))
+    .catch(error => {
+      console.log(error)
+    });
 
-    .catch(error => console.log(error));
+    event.stopImmediatePropagation()
   });
 }

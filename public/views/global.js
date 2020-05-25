@@ -39,13 +39,9 @@ function toggle(elementId){
 
 function toggleDisplay(elementId){
     let div= document.getElementById(elementId);
-
-    console.log('Display status:', div.style.display.value)
-
     if (div.style.display === "none"){
         div.style.display = "block"
     }else{
         div.style.display = "none";
-
     }
 };
