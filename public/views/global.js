@@ -69,7 +69,7 @@ function failureAlertForm(toggleFormPopupId, messageString, dataTypeAdd, formId,
   
     //display message
     addAlert.innerHTML = `
-      <h2 id="messageFailure">${messageString}</h2>
+      <h2 "alertH2" id="messageFailure">${messageString}</h2>
       <a class = "fatbutton outBtn" id="outBtn">Sair</a>
       <a class="fatbutton btnAddNew" id="btnAdd${dataTypeAdd}">Tentar novamente </a>
     `
@@ -109,10 +109,9 @@ function failureAlertForm(toggleFormPopupId, messageString, dataTypeAdd, formId,
   
     //display message
     addAlert.innerHTML = `
-
       <h2 id="messageSuccess">${messageString}</h2>
-        <a class = "fatbutton outBtn" id="outBtnSuc">Sair</a>
-        <a class = "fatbutton btnAddNew" id="btnAdd${dataTypeAdd}">Adicionar outro</a>
+      <a class = "fatbutton outBtn" id="outBtnSuc">Sair</a>
+      <a class = "fatbutton btnAddNew" id="btnAdd${dataTypeAdd}">Adicionar outro</a>
     `
     //button add another
     const btnAddNew = document.getElementById(`btnAdd${dataTypeAdd}`)
@@ -149,17 +148,15 @@ function alertDelete(toggleDataPopupId, messageString, infoId, alertId){
   
     //MESSAGE DISPLAY
     addAlert.innerHTML = `
-    <div>
-      <h2 id="messageSuccess">${messageString}"</h2>
-      <a class = "fatbutton" id="outBtn">Sair</a>
-    </div>
+      <h2 id="messageSuccess">${messageString}</h2>
+      <a class = "fatbutton outBtn" id="outBtnDelete">Sair</a>
     `
     //BUTTON OUT 
-    const outBtn= document.getElementById('outBtn');
+    const outBtn= document.getElementById('outBtnDelete');
     container.innerHTML = '';
     outBtn.addEventListener('click', () => {
-      console.log('CLICK SAIR DEPOIS DO DELETAR')
       toggle(toggleDataPopupId)
+      console.log(toggleDataPopupId)
       fetchClientList()
     });
   }

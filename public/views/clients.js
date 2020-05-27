@@ -45,7 +45,7 @@ function createClientCard(client){
 
   if(document.getElementById('infoClient').style.display === "none"){   
     toggleDisplay('infoClient');
-    toggleDisplay('alertDeleteClient');
+    toggleDisplay('deleteClientAlert');
   }
 }
 
@@ -270,8 +270,6 @@ function deleteClient(clientId){
   deleteBtn.setAttribute('clientId', `${clientId}`)
 
   deleteBtn.addEventListener('click', event =>{
-    console.log('CLICKKKK')
-    console.log(deleteBtn)
     let clientId = event.target.getAttribute('clientId');
 
     fetch(`http://localhost:5000/clients/${clientId}`,{
@@ -281,9 +279,9 @@ function deleteClient(clientId){
       .then(text => {
         console.log(text)
         if(response.status === 200){
-          alertDelete('popupBD','Cliente deletado com sucesso!','infoClient','alertDeleteClient');
+          alertDelete('popupBD','Cliente deletado com sucesso!','infoClient','deleteClientAlert');
         }else{
-          alertDelete('popupBD','Ocorreu um erro ao deletar o cliente','infoClient','alertDeleteClient');
+          alertDelete('popupBD','Ocorreu um erro ao deletar o cliente','infoClient','deleteClientAlert');
         }
       }))
     .catch(error => {

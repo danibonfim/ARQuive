@@ -695,7 +695,7 @@ ul{
     display: grid;
 }
 
-#addClientAlert {
+.responseAlert {
     display: grid;
     width: 50%;
     height: 250px;
@@ -758,11 +758,36 @@ ul{
     font-size: 1.8em;
 }
 
-.outBtnSuc{
+#outBtnSuc{
     width: ;
-    grid-column: 1 / span 2;
     align-self: center;
 }
+
+
+/* DELETE ALERT ---------------*/
+
+#deleteClientAlert h2 {
+    color:rgba(229, 229, 229);
+    font-size: 1.8em;
+}
+
+#deleteClientAlert{
+    background-color: rgba(217,109, 109);
+}
+
+#deleteClientAlert .outBtn{
+    background-color:  rgba(217,109, 109);
+    border: solid 2px  rgba(229, 229, 229);
+    grid-column: span 2;
+    width: 80%;
+}
+
+#deleteClientAlert .outBtn:hover{
+    background-color:  rgba(229, 229, 229);
+    color:rgba(217,109, 109);
+}
+
+
 
 /* Underline From Left */
 
