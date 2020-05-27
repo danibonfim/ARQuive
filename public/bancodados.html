@@ -15,6 +15,7 @@
 
         <!-- Your own stylesheet -->
         <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="styleOut.css">
 
         <!-- Font Awesome-->
         <script src="https://kit.fontawesome.com/ea5fea625e.js" crossorigin="anonymous"></script>
@@ -43,21 +44,17 @@
             <div class="content">
                 <div class="content-header">
                     <h2 id="tituloquery">Titulo</h2>
-                    <button class = "yellowBox" id="addData"></button>
+                    <i class="fas fa-plus-circle iconButton pointer tooltip" id="addData">
+                        <span class="tooltiptext">Criar cliente</span>
+                    </i>
                     <form action="" class="campobusca" >
                         <input type="text" class ="yellowBox" id="inputSearch" onkeyup="filterByName()" placeholder = "Filtrar por nome" title = "Digite um nome">
                         <!-- <button type="submit" class="btnbusca" id="btnSearch"><i class="fas fa-search"></i></button> -->
                     </form>
                 </div>
-                <div id="query">
+                <div id="query">                 
 
-                    <!-- <div class="box hvr-underline-from-left pointer" onclick = "toggle()">
-                        
-                        <h3 class="nome">Nome cliente</h3>
-                        <h4 class="contato"><i class="fas fa-phone-alt contatoicone"></i>contato</h4>
-                        <h4 class="contato"><i class="fas fa-mobile-alt contatoicone""></i>contato</h4>
-                        <i class="fas fa-plus-circle mais"></i>       
-                    </div> -->
+                    <!-- CLIENTS CARDS -->
 
                 </div>
 
@@ -67,75 +64,27 @@
        </div>
 
         <!-- ADD CLIENT POPUP FORM---------------------------------------------------------------->
-       <div class="container popup" id="clientForm">
-           <div id="formCl">
-                <!-- <header>
-                        <h2>Novo Cliente</h2>
-                        <button  class="iconButton" id="close" onclick="toggle('clientForm')"><i class="fas fa-times-circle"></i></button>
-                </header>
-                    <form  id="formClient">
-                        <div>
-                            <label for="firstName">Nome</label>
-                            <input type="text" name ="firstName" value="">
-                                
-                            <label for="lastName">Sobrenome</label>
-                            <input type="text" name ="lastName" value="">
-
-                            <label for="cpf">CPF</label>
-                            <input type="number" name ="cpf" value="">
-
-                            <label for="birthDate">Data nascimento</label>
-                            <input type="date" name ="birthDate" value="">
-                        </div>
-                        <div>
-                            <h3>Contato</h3>
-
-                            <label for="areaCode">DDD</label>
-                            <input type="number" name ="areaCode" value="">
-                                
-                            <label for="phone">Telefone</label>
-                            <input type="number" name ="phone" value="">
-
-                            <label for="cellphone">Celular</label>
-                            <input type="number" name ="cellphone" value="">
-
-                            <label for="email">E-mail</label>
-                            <input type="text" name ="email" value="">
-                        </div>
-
-                        <div>
-                            <h3>Endereço</h3>
-
-                            <label for="street">Rua</label>
-                            <input type="text" name ="street" value="">
-
-                            <label for="neighb">Bairro</label>
-                            <input type="text" name ="neighb" value="">
-
-                            <label for="addressCompl">Complemento</label>
-                            <input type="text" name ="addressCompl" value="">
-
-                            <label for="city">Cidade</label>
-                            <input type="text" name ="city" value="">
-
-                            <label for="postalCode">CEP</label>
-                            <input type="number" name ="postalCode" value="">
-                        </div>
-
-                        <button type="submit">Submit</button>    
-                    </form> -->
-            </div>
+       <div class="container popup popupBD" id="clientForm">
+            <header class="popupHeader popupBD" id="formClientHeader">
+                <h2>Novo Cliente</h2>
+                <i class="fas fa-times-circle pointer iconButton" id ="closeForm" onclick="toggle('clientForm')"></i>
+            </header>
+            <form class= "formAdd" id ="formClient">
+                <!-- FORM CREATED -->
+            </form>
 
             <div id="addClientAlert" style="display: none;">
 
             </div>
        </div>
          <!-- BANCO DADOS POP UP--------------------------------------------------------------------------->
-       <div class="container popup" id="popupBD">
+       <div class="container popup popupBD" id="popupBD">
            <div id="infoClient">
                 <header class="popupHeader" id="popupHeader">
-                    <h2 class="tituloPopup" id='tituloPopup'></h2>
-                    <i class="fas fa-trash iconButton delete pointer" id="deleteBtn"></i>
+                    <div class="nameEdit">
+                        <h2 class="tituloPopup" id='tituloPopup'></h2>
+                        <i class="fas fa-trash iconButton delete pointer" id="deleteBtn"></i>
+                    </div>
                     <i class="fas fa-times-circle iconButton delete pointer" id="closeBtn" onclick="toggle('popupBD')"></i>
                 </header>
                 <div id="clientContent">
@@ -175,16 +124,17 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="dataProjectClient" id="projectList"> 
-                    <h3 class="popupBoxTitle">Projetos</h3>
-                    <div class="projects" id='projects'>
-                            <!-- BOX DAS IMAGENS  -->
+                    <div class="dataProjectClient" id="projectList"> 
+                        <h3 class="popupBoxTitle">Projetos</h3>
+                        <div class="projects" id='projects'>
+                                <!-- BOX DAS IMAGENS  -->
+                        </div>
                     </div>
                 </div>
-            </div>    
-            <div id="alertDeleteClient" style= "display: none"></div>
-        </div>
+            </div> 
+         </div>   
+         <div id="alertDeleteClient" style= "display: none"></div>
+       
 
         <script type='text/javascript' src='./views/clients.js'></script>
         <script type='text/javascript' src='./views/global.js'></script>

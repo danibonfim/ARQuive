@@ -37,11 +37,150 @@ function toggle(elementId){
     popup.classList.toggle("active");
 }
 
-function toggleDisplay(elementId){
+//TOGGLE DISP
+
+function toggleDisplay(elementId, displayType = "grid"){
     let div= document.getElementById(elementId);
     if (div.style.display === "none"){
-        div.style.display = "block"
+        div.style.display = `${displayType}`
     }else{
         div.style.display = "none";
     }
 };
+
+
+// function toggleDisplay(elementId){
+//   let div= document.getElementById(elementId);
+//   if (div.style.visibility === "hidden"){
+//       div.style.visibility = "visible";
+//   }else{
+//       div.style.visibility = "hidden";
+//   }
+// };
+
+//ALERT ADD DATA
+
+function failureAlertForm(toggleFormPopupId, messageString, dataTypeAdd, formId, alertId, headerId){
+    console.log('CONSOLE DENTRO DA FUNCAO FAIL ALERTFORM')
+    toggleDisplay(formId);
+    toggleDisplay(alertId);
+    toggleDisplay(headerId);
+    const addAlert = document.getElementById(alertId);
+  
+    //display message
+    addAlert.innerHTML = `
+      <h2 id="messageFailure">${messageString}</h2>
+      <a class = "fatbutton outBtn" id="outBtn">Sair</a>
+      <a class="fatbutton btnAddNew" id="btnAdd${dataTypeAdd}">Tentar novamente </a>
+    `
+    //button try again
+    const btnAddNew = document.getElementById(`btnAdd${dataTypeAdd}`)
+    
+    btnAddNew.addEventListener('click', (event) => {
+      document.getElementById(formId).reset()
+
+
+      toggleDisplay(alertId);
+      toggleDisplay(formId);
+      toggleDisplay(headerId);
+      document.getElementById("submit").disabled = false;
+      
+      let close = document.getElementById('closeForm');
+      close.addEventListener('click', fetchClientList);
+    });
+  
+    //button out
+    const outBtn= document.getElementById('outBtn');
+    container.innerHTML = '';
+    outBtn.addEventListener('click', () => {
+      toggle(toggleFormPopupId)
+      fetchClientList()
+    });
+  
+  }
+  
+
+
+  function successAlertForm(toggleFormPopupId, messageString, dataTypeAdd, formId, alertId, headerId){
+    toggleDisplay(formId);
+    toggleDisplay(alertId);
+    toggleDisplay(headerId);
+    const addAlert = document.getElementById(alertId);
+  
+    //display message
+    addAlert.innerHTML = `
+
+      <h2 id="messageSuccess">${messageString}</h2>
+        <a class = "fatbutton outBtn" id="outBtnSuc">Sair</a>
+        <a class = "fatbutton btnAddNew" id="btnAdd${dataTypeAdd}">Adicionar outro</a>
+    `
+    //button add another
+    const btnAddNew = document.getElementById(`btnAdd${dataTypeAdd}`)
+    btnAddNew.addEventListener('click', (event) => {
+      document.getElementById(formId).reset()
+      toggleDisplay(alertId);
+      toggleDisplay(formId);
+      toggleDisplay(headerId);
+      document.getElementById("submit").disabled = false;
+  
+      let close = document.getElementById('closeForm');
+      close.addEventListener('click', fetchClientList);
+  
+    });
+  
+    //button out
+    const outBtn= document.getElementById('outBtnSuc');
+    container.innerHTML = '';
+    outBtn.addEventListener('click', () => {
+      toggle(toggleFormPopupId)
+      fetchClientList()
+    });
+  
+  }
+
+
+  //ALERT DELETE
+
+  
+function alertDelete(toggleDataPopupId, messageString, infoId, alertId){
+    toggleDisplay(infoId);
+    toggleDisplay(alertId);
+    const addAlert = document.getElementById(alertId);
+  
+    //MESSAGE DISPLAY
+    addAlert.innerHTML = `
+    <div>
+      <h2 id="messageSuccess">${messageString}"</h2>
+      <a class = "fatbutton" id="outBtn">Sair</a>
+    </div>
+    `
+    //BUTTON OUT 
+    const outBtn= document.getElementById('outBtn');
+    container.innerHTML = '';
+    outBtn.addEventListener('click', () => {
+      console.log('CLICK SAIR DEPOIS DO DELETAR')
+      toggle(toggleDataPopupId)
+      fetchClientList()
+    });
+  }
+
+
+
+  //LOAD EVENT
+  // function createLoader(elementId){
+  //   const div = document.getElementById(elementId);
+  //   const htmlLoader = `
+  //   <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+  //   `
+  //   let divLoader = document.createElement('div');
+  //   divLoader.setAttribute('class', 'lds-roller loader')
+  //   divLoader.innerHTML = htmlLoader;
+  //   div.appendChild(divLoader);
+
+  //   window.addEventListener("load", () =>{
+  //     const loader = document.querySelector(".loader");
+  //     console.log(loader)
+  //     loader.className += " hidden";
+  //   })
+  
+  // }

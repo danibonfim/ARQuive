@@ -106,10 +106,9 @@ router.get('/:projectId', (req, res, next) => {
 //___________________________________________________________
 
 
-router.post('/', upload.single('projectImage'), (req, res, next) => {
-    console.log(req.file);
+router.post('/', (req, res, next) => {
     console.log(req.body);
-    const imagePath = req.file.path;
+    const imagePath = req.files['projectImage'].path;
 
     const project = new Project({
         _id: new mongoose.Types.ObjectId(),
@@ -118,7 +117,7 @@ router.post('/', upload.single('projectImage'), (req, res, next) => {
         finish: req.body.finish,
         services: req.body.services,
         price: req.body.price,
-        projectImage: req.file.path,
+        projectImage: imagePath,
         personId: req.body.personId,
     });
 

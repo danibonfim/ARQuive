@@ -1,6 +1,8 @@
 const container = document.getElementById('query');
 const projects = document.getElementById('projects');
 
+
+
 //-------Container content---------------------------------------------------------------
 
 function fetchClientById(clientId){
@@ -29,12 +31,12 @@ function createClientCard(client){
       <h4 class="contatoBox"><i class="fas fa-phone-alt contatoicone"></i>(${client.areaCode})${client.phone}</h4>
       <h4 class="contato"><i class="fas fa-mobile-alt contatoicone"></i>(${client.areaCode})${client.cellphone}</h4>  
   `
-  let plus = document.createElement('i');
-  plus.setAttribute('class', 'fas fa-plus-circle iconButton plus pointer');
-  plus.setAttribute('id', `${client._id}`);
-  outerDiv.appendChild(plus);
+  let info = document.createElement('i');
+  info.setAttribute('class', 'fas fa-info-circle iconButton pointer info');
+  info.setAttribute('id', `${client._id}`);
+  outerDiv.appendChild(info);
 
-  plus.addEventListener('click', event => {
+  info.addEventListener('click', event => {
       let clientId = event.target.id;
       fetchClientById(clientId);
 
@@ -109,7 +111,6 @@ function fetchClientProject(clientId){
 
       })
   })
-      
   .catch(err =>
     console.error('Failed retrieving information', err)
   )
@@ -122,13 +123,13 @@ function fetchClientProject(clientId){
 document.getElementById('headerClients').addEventListener('click', event => {
     //btn add client
     let btnAdd = document.getElementById('addData');
-    btnAdd.innerHTML = "Adicionar novo cliente";
 
     const addNewClient = event =>{
 
-      if(document.getElementById('formCl').style.display === "none"){   
+      if(document.getElementById('formClient').style.display === "none"){   
         toggleDisplay('addClientAlert');
-        toggleDisplay('formCl');
+        toggleDisplay('formClient');
+        toggleDisplay('formClientHeader');
       }
 
       toggle('clientForm')
@@ -148,67 +149,76 @@ document.getElementById('headerClients').addEventListener('click', event => {
 
 //Create form
 function createForm(){
-  const clientForm = document.getElementById('formCl');
+  const clientForm = document.getElementById('formClient');
   clientForm.innerHTML = `
-            <header>
-                <h2>Novo Cliente</h2>
-                <button  class="iconButton" id="close" onclick="toggle('clientForm')"><i class="fas fa-times-circle"></i></button>
-           </header>
-            <form  id="formClient">
-                <div>
-                    <label for="firstName">Nome</label>
-                    <input type="text" name ="firstName" value="">
-                        
-                    <label for="lastName">Sobrenome</label>
-                    <input type="text" name ="lastName" value="">
+    <div class="form">
+        <div class="formPart" id="formPart1">  
+            <div class="formPair">
+                <label for="firstName">Nome</label>
+                <input type="text" name ="firstName" value="">
+            </div>
+          <div class="formPair">
+              <label for="lastName">Sobrenome</label>
+              <input type="text" name ="lastName" value="">
+          </div>
+          <div class="formPair">
+              <label for="cpf">CPF</label>
+              <input type="number" name ="cpf" value="">
+          </div>
+          <div class="formPair">
+              <label for="birthDate">Data nascimento</label>
+              <input type="date" name ="birthDate" value="">
+          </div>
+        </div> 
 
-                    <label for="cpf">CPF</label>
-                    <input type="number" name ="cpf" value="">
+        <div class="titleForm" id="titleContact"><h3>Contato</h3></div>
 
-                    <label for="birthDate">Data nascimento</label>
-                    <input type="date" name ="birthDate" value="">
-                </div>
-                <div>
-                    <h3>Contato</h3>
+      <div class="formPart" id="formPart2">    
+        <div class="formPair">
+            <label for="areaCode">DDD</label>
+            <input type="number" name ="areaCode" value="">
+        </div>
+        <div class="formPair">  
+            <label for="phone">Telefone</label>
+            <input type="tel" name ="phone" value="">
+        </div>
+        <div class="formPair">
+            <label for="cellphone">Celular</label>
+            <input type="tel" name ="cellphone" value="">
+        </div>
+        <div class="formPair">
+            <label for="email">E-mail</label>
+            <input type="email" name ="email" value="">
+        </div>
+      </div>
+        <div class="titleForm" id="titleAdress"><h3>Endereço</h3></div>
 
-                    <label for="areaCode">DDD</label>
-                    <input type="number" name ="areaCode" value="">
-                        
-                    <label for="phone">Telefone</label>
-                    <input type="number" name ="phone" value="">
-
-                    <label for="cellphone">Celular</label>
-                    <input type="number" name ="cellphone" value="">
-
-                    <label for="email">E-mail</label>
-                    <input type="text" name ="email" value="">
-                </div>
-
-                <div>
-                    <h3>Endereço</h3>
-
-                    <label for="street">Rua</label>
-                    <input type="text" name ="street" value="">
-
-                    <label for="neighb">Bairro</label>
-                    <input type="text" name ="neighb" value="">
-
-                    <label for="addressCompl">Complemento</label>
-                    <input type="text" name ="addressCompl" value="">
-
-                    <label for="city">Cidade</label>
-                    <input type="text" name ="city" value="">
-
-                    <label for="postalCode">CEP</label>
-                    <input type="number" name ="postalCode" value="">
-                </div>
-
-                 <button type="submit" id="submit">Submit</button>    
-            </form>
-  
+      <div class="formPart" id="formPart3">  
+        <div class="formPair">
+            <label for="street">Rua</label>
+            <input type="text" name ="street" value="">
+        </div>
+        <div class="formPair">
+            <label for="neighb">Bairro</label>
+            <input type="text" name ="neighb" value="">
+        </div>
+        <div class="formPair">
+            <label for="addressCompl">Complemento</label>
+            <input type="text" name ="addressCompl" value="">
+          </div>
+        <div class="formPair">
+            <label for="city">Cidade</label>
+            <input type="text" name ="city" value="">
+        </div>
+        <div class="formPair">
+            <label for="postalCode">CEP</label>
+            <input type="text" name ="postalCode" value="">
+        </div>
+      </div>
+      <div class="btnSubmit"><button type="submit" id="submit">Enviar</button></div> 
+    </div>
   `
 }
-
 
 
 function fetchClientList(){
@@ -226,8 +236,8 @@ function fetchClientList(){
 //-------ADD NEW CLIENT-------------------------------------------------------------
 
 function newClient(){
-  formClient.addEventListener('submit', (e)=>{
-      e.preventDefault(); //prevent the page from reloading or getting away when the form is submmited    
+  formClient.addEventListener('submit', (event)=>{
+      event.preventDefault(); //prevent the page from reloading or getting away when the form is submmited    
       //making a "copy" of the form input
       const formData = new FormData(document.getElementById('formClient'));
       document.getElementById("submit").disabled = true;
@@ -240,125 +250,28 @@ function newClient(){
           console.log('ENTANDO NO SEGUNDO THEN')
           console.log(text)
           if(response.status === 200){
-            successAlertForm('clientForm','Cliente adicionado com sucesso!', 'cliente', 'formCl','addClientAlert');
+            successAlertForm('clientForm','Cliente adicionado com sucesso!', 'cliente', 'formClient','addClientAlert','formClientHeader');
           }else{
-            failureAlertForm('clientForm','Erro ao adicionar cliente!', 'cliente', 'formCl','addClientAlert');
+            failureAlertForm('clientForm','Erro ao adicionar cliente!', 'cliente', 'formClient','addClientAlert','formClientHeader');
           }
         }))
       .catch(error => {
         console.log(error)
       })
+      console.log('CLICK SUBMIT')
+      event.stopImmediatePropagation();
   })
 }
 
-
-
-
-function failureAlertForm(toggleFormPopupId, messageString, dataTypeAdd, formId, alertId){
-  toggleDisplay(formId);
-  toggleDisplay(alertId);
-  const addAlert = document.getElementById(alertId);
-
-  //MESSAGE DISPLAY
-  addAlert.innerHTML = `
-  <div>
-    <h2 id="messageFailure">${messageString}"</h2>
-    <a class = "fatbutton" id="outBtn">Sair</a>
-    <button class="fatbutton btnAddNew" id="btnAdd${dataTypeAdd}">Tentar novamente</button>
-  </div>
-  `
-  //BUTTON TRY AGAIN
-  const btnAddNew = document.getElementById(`btnAdd${dataTypeAdd}`)
-  btnAddNew.addEventListener('click', (event) => {
-    document.getElementById(formId).getElementsByTagName('form')[0].reset()
-    toggleDisplay(alertId);
-    toggleDisplay(formId);
-    document.getElementById("submit").disabled = false;
-    let close = document.getElementById('close');
-    close.addEventListener('click', fetchClientList);
-    
-
-  });
-
-  //BUTTON OUT 
-  const outBtn= document.getElementById('outBtn');
-  container.innerHTML = '';
-  outBtn.addEventListener('click', () => {
-    toggle(toggleFormPopupId)
-    fetchClientList()
-  });
-
-}
-
-function successAlertForm(toggleFormPopupId, messageString, dataTypeAdd, formId, alertId){
-  toggleDisplay(formId);
-  toggleDisplay(alertId);
-  const addAlert = document.getElementById(alertId);
-
-  //MESSAGE DISPLAY
-  addAlert.innerHTML = `
-  <div>
-    <h2 id="messageSuccess">${messageString}"</h2>
-    <a class = "fatbutton" id="outBtn">Sair</a>
-    <button class="fatbutton btnAddNew" id="btnAdd${dataTypeAdd}">Adicionar outro ${dataTypeAdd}</button>
-  </div>
-  `
-  //BUTTON ADD ANOTHER
-  const btnAddNew = document.getElementById(`btnAdd${dataTypeAdd}`)
-  btnAddNew.addEventListener('click', (event) => {
-    document.getElementById(formId).getElementsByTagName('form')[0].reset()
-    toggleDisplay(alertId);
-    toggleDisplay(formId);
-    document.getElementById("submit").disabled = false;
-
-    let close = document.getElementById('close');
-    close.addEventListener('click', fetchClientList);
-
-  });
-
-  //BUTTON OUT 
-  const outBtn= document.getElementById('outBtn');
-  container.innerHTML = '';
-  outBtn.addEventListener('click', () => {
-    toggle(toggleFormPopupId)
-    fetchClientList()
-  });
-
-}
-
-
 // DELETE CLIENT -------------------------------------------
-
-
-function alertDelete(toggleDataPopupId, messageString, infoId, alertId){
-  toggleDisplay(infoId);
-  toggleDisplay(alertId);
-  const addAlert = document.getElementById(alertId);
-
-  //MESSAGE DISPLAY
-  addAlert.innerHTML = `
-  <div>
-    <h2 id="messageSuccess">${messageString}"</h2>
-    <a class = "fatbutton" id="outBtn">Sair</a>
-  </div>
-  `
-  //BUTTON OUT 
-  const outBtn= document.getElementById('outBtn');
-  container.innerHTML = '';
-  outBtn.addEventListener('click', () => {
-    toggle(toggleDataPopupId)
-    fetchClientList()
-  });
-}
-
-
-
 
 function deleteClient(clientId){
   const deleteBtn = document.getElementById('deleteBtn');
   deleteBtn.setAttribute('clientId', `${clientId}`)
 
   deleteBtn.addEventListener('click', event =>{
+    console.log('CLICKKKK')
+    console.log(deleteBtn)
     let clientId = event.target.getAttribute('clientId');
 
     fetch(`http://localhost:5000/clients/${clientId}`,{
@@ -377,6 +290,6 @@ function deleteClient(clientId){
       console.log(error)
     });
 
-    event.stopImmediatePropagation()
+    event.stopImmediatePropagation();
   });
 }

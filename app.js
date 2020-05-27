@@ -6,18 +6,34 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require("path");
 const formData = require('express-form-data');
+const os = require("os");
 
 //-----PATH ROUTES-----------------------
 const projectRoutes = require('./api/routes/projects');
 const clientRoutes = require('./api/routes/clients');
 const teamRoutes = require('./api/routes/team');
 
-//-----MONGODB CONECTION--------------------
-mongoose.connect(
-    'mongodb+srv://daniela:animal11@arquivedb-3ewau.mongodb.net/test?retryWrites=true&w=majority',
-    {useNewUrlParser: true, useUnifiedTopology: true}
-);
+//-----MONGODB CONECTION WITH MONGOOSE--------------------
+// mongoose.connect(
+//     'mongodb+srv://daniela:animal11@arquivedb-3ewau.mongodb.net/test?retryWrites=true&w=majority',
+//     {useNewUrlParser: true, useUnifiedTopology: true}
+// );
+
+
+const url = 'mongodb://127.0.0.1:27017/ARQuive'
+mongoose.connect(url, { useUnifiedTopology: true })
+const db = mongoose.connection
+db.once('open', _ => {
+  console.log('Database connected:', url)
+})
+
+db.on('error', err => {
+  console.error('connection error:', err)
+})
+
 mongoose.Promise = global.Promise;
+
+
 
 //-----NODE USE MIDDLEWARE--------------------
 app.use(morgan('dev'));
@@ -25,7 +41,20 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use('/uploads',express.static('uploads'));
 app.use(express.static(path.join(__dirname, "/public")));
-app.use(formData.parse()); // Midleware for reading multipart/form-data
+// app.use(formData.parse()); // Midleware for reading multipart/form-data
+const options = {
+    uploadDir: 'uploads',
+    autoClean: false
+};
+   
+// parse data with connect-multiparty. 
+app.use(formData.parse(options));
+// delete from the request all empty files (size == 0)
+app.use(formData.format());
+// change the file objects to fs.ReadStream 
+app.use(formData.stream());
+// union the body and the files
+app.use(formData.union());
  
 //-----CORS ERRORS--------------------
 app.use((req, res, next)=>{
