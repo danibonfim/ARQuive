@@ -40,13 +40,14 @@ function createClientCard(client){
       let clientId = event.target.id;
       fetchClientById(clientId);
 
+      if(document.getElementById('infoClient').style.display === "none"){   
+        toggleDisplay('infoClient');
+        toggleDisplay('deleteClientAlert');
+      }
+
   });
   container.appendChild(outerDiv);
 
-  if(document.getElementById('infoClient').style.display === "none"){   
-    toggleDisplay('infoClient');
-    toggleDisplay('deleteClientAlert');
-  }
 }
 
 
@@ -64,8 +65,9 @@ function fetchClientList(){
 //popup Client innerHTML
 
 function createPopUp(client){
+  console.log(client.birthDate)
   document.getElementById('tituloPopup').innerHTML = `${client.firstName} ${client.lastName}`
-  document.getElementById('birthDate').innerHTML = client.birthDate
+  document.getElementById('birthDate').innerHTML = dateStamp(client.birthDate)
   document.getElementById('cpf').innerHTML = client.cpf
   document.getElementById('tellphone').innerHTML = `${client.areaCode}${client.phone}`
   document.getElementById('cellphone').innerHTML = `${client.areaCode}${client.cellphone}`

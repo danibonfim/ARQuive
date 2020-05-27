@@ -45,7 +45,7 @@
                 <div class="content-header">
                     <h2 id="tituloquery">Titulo</h2>
                     <i class="fas fa-plus-circle iconButton pointer tooltip" id="addData">
-                        <span class="tooltiptext">Criar cliente</span>
+                        <span class="tooltiptext">Criar</span>
                     </i>
                     <form action="" class="campobusca" >
                         <input type="text" class ="yellowBox" id="inputSearch" onkeyup="filterByName()" placeholder = "Filtrar por nome" title = "Digite um nome">
@@ -83,7 +83,9 @@
                 <header class="popupHeader" id="popupHeader">
                     <div class="nameEdit">
                         <h2 class="tituloPopup" id='tituloPopup'></h2>
-                        <i class="fas fa-trash iconButton delete pointer" id="deleteBtn"></i>
+                        <i class="fas fa-trash iconButton delete pointer" id="deleteBtn">
+                            <span class="tooltiptext">Excluir</span>
+                        </i>
                     </div>
                     <i class="fas fa-times-circle iconButton delete pointer" id="closeBtn" onclick="toggle('popupBD')"></i>
                 </header>
@@ -92,34 +94,35 @@
                         <div class="perfilPopup">
                             <h3 class="popupBoxTitle">Perfil</h3>
                             <div class="boxContent">
-                                <h4>Nascimento:</h4>
+                                <h4>Nascimento :</h4>
                                 <h5 id="birthDate"><h5>
-                                <h4>CPF</h4>
-                                <h4 id="cpf"></h4>
+                                <h4 id="cpfTitle">CPF :</h4>
+                                <h5 id="cpf"></h4>
                             </div>
                         </div>
                         <div class="contactPopup">
-                            <h3 class="popupBoxTitle">Contato:</h3>
+                            <h3 class="popupBoxTitle">Contato :</h3>
                             <div class="boxContent">
-                                <h4>Telefone</h4>
+                                <h4>Telefone :</h4>
                                 <h5 id="tellphone"><h5>
-                                <h4>Celular</h4>
+                                <h4 id="cellTitle">Celular :</h4>
                                 <h5 id="cellphone"><h5></h5>
-                                <h4>E-mail</h4>
+                                <h4 id="emailTitle">E-mail :</h4>
                                 <h5 id="email"></h5>
                             </div>
                         </div>
                         <div class="addressPopup">
                             <h3 class="popupBoxTitle">Endereço:</h3>
                             <div class="boxContent">
-                                <h4>Rua</h4>
+                                <h4 id="streetTitle">Rua :</h4>
                                 <h5 id="street"></h5>
+                                <h4 id="compTitle">Comp. :</h4>
                                 <h5 id="num"></h5>
-                                <h4>Bairro</h4>
+                                <h4 id="districtTitle">Bairro :</h4>
                                 <h5 id="district"></h5>
-                                <h4>Cidade</h4>
+                                <h4 id="cityTitle">Cidade :</h4>
                                 <h5 id="city"></h5>
-                                <h4>CEP</h4>
+                                <h4 id="cepTitle">CEP :</h4>
                                 <h5 id="postalCode"></h5>
                             </div>
                         </div>

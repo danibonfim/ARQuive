@@ -110,8 +110,8 @@ function failureAlertForm(toggleFormPopupId, messageString, dataTypeAdd, formId,
     //display message
     addAlert.innerHTML = `
       <h2 id="messageSuccess">${messageString}</h2>
-      <a class = "fatbutton outBtn" id="outBtnSuc">Sair</a>
       <a class = "fatbutton btnAddNew" id="btnAdd${dataTypeAdd}">Adicionar outro</a>
+      <a class = "fatbutton outBtn" id="outBtnSuc">Sair</a>
     `
     //button add another
     const btnAddNew = document.getElementById(`btnAdd${dataTypeAdd}`)
@@ -156,8 +156,8 @@ function alertDelete(toggleDataPopupId, messageString, infoId, alertId){
     container.innerHTML = '';
     outBtn.addEventListener('click', () => {
       toggle(toggleDataPopupId)
-      console.log(toggleDataPopupId)
       fetchClientList()
+
     });
   }
 
@@ -181,3 +181,13 @@ function alertDelete(toggleDataPopupId, messageString, infoId, alertId){
   //   })
   
   // }
+
+
+  //DATE STAMP DD/MM/YYYY 
+function dateStamp(date){
+  let str = date.toString();
+  let split = str.split("T");
+  let newstr = split[0].split("-");
+  let dateStamp = newstr[2] + "/" + newstr[1] + "/" + newstr[0]
+  return dateStamp
+}
