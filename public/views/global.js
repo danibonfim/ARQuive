@@ -197,6 +197,7 @@ function dateStamp(date){
 //ADD BOTÃO DE CRIAR NOVO ELEMENTO
 
 function createBtnAdd(elementType){
+  console.log('Rodei!')
   let divContentHeader = document.getElementById('btnAdd');
   divContentHeader.innerHTML = '';
 

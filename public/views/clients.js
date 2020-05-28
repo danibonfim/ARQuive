@@ -112,27 +112,63 @@ function createPopUp(client){
 //Popup Client Projects
 
 function createProjectCard(project){
-  let projectBox = document.createElement('a');
+  let projectBox = document.createElement('div');
   projectBox.setAttribute('class', 'imageBox');
-  projectBox.setAttribute('href', '#');
-  projectBox.setAttribute('id', `${project._id}`);
+  // projectBox.setAttribute('id', `${project._id}`);
   projectBox.innerHTML = `
   <img src="http://localhost:5000/${project.projectImage}" alt="${project.name}">
-    <h4 class="projectTitle" id = "projectTitle">${project.name}</h4>
-    `
+    <div class="projectInfo">
+      <h4 class="projectTitle"">${project.name}</h4>
+      <i class="fas fa-info-circle iconButton pointer info infoProject" id="${project._id}" personId="${project.personId}"></i>
+    </div>
+  `
   projects.appendChild(projectBox);
+
+
+  let infoProject = document.getElementById(`${project._id}`)
+  infoProject.addEventListener('click', event =>{
+    fetchProjectClicked(event.target.attributes.id.value, event.target.attributes.personId.value)
+    
+  })
+
 }
 
 
+//ProjectCard onclick Fetch project
 
-//wraping everything
-document.getElementById('headerClients').addEventListener('click', event => {
-    //btn add client  
+function fetchProjectClicked(projectId, personId){
+  fetch('http://localhost:5000/projects/' + projectId)
+  .then(response =>
+    response.json()
+      .then(project =>  {
+        console.log(project)
+        createProjectPopup(project, personId);
+        deleteProject(projectId);
+      }) .then(()=>{
+        toggle('popupBD');
+        toggle('popupBdProject');
+      })
+  .catch(err =>
+    console.error('Failed retrieving information', err)
+  )  
+)
 
+};
+
+
+
+
+
+
+
+
+
+
+
+function loadClients(){
+    document.getElementById("headerClients").focus();
     createBtnAdd('Client')
-    // btnAdd('Client')
-    // let btnAdd = document.getElementById('addDataClient');
-
+  
     const addNewClient = event =>{
       
       if(document.getElementById('formClient').style.display === "none"){   
@@ -153,7 +189,11 @@ document.getElementById('headerClients').addEventListener('click', event => {
 
     //container and popup content
     fetchClientList();
-  
+}
+
+//wraping everything
+document.getElementById('headerClients').addEventListener('click', event => {
+  loadClients()
 })
 
 
@@ -251,9 +291,17 @@ function newClient(){
           console.log('ENTANDO NO SEGUNDO THEN')
           console.log(text)
           if(response.status === 200){
-            successAlertForm('clientForm','Cliente adicionado com sucesso!', 'cliente', 'formClient','addClientAlert','formClientHeader');
+            successAlertForm('clientForm','Cliente adicionado com sucesso!', 'cliente', 'formClient','addClientAlert','formClientHeader', fetchClientList);
           }else{
-            failureAlertForm('clientForm','Erro ao adicionar cliente!', 'cliente', 'formClient','addClientAlert','formClientHeader');
+            failureAlertForm(
+              'clientForm',
+              'Erro ao adicionar cliente!', 
+              'cliente', 
+              'formClient',
+              'addClientAlert',
+              'formClientHeader', 
+              fetchClientList
+            );
           }
         }))
       .catch(error => {

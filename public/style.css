@@ -697,9 +697,10 @@ ul{
 }
 
 .inputWrite:focus{
+    outline: none !important;
     background-color: rgba(229, 229, 229);
-    border-color:  rgba(217,109, 109);;
-
+    border:2px solid #f4ce93;
+    
 }
 
 .form{
