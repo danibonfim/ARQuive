@@ -5,6 +5,20 @@ const projects = document.getElementById('projects');
 
 //-------Container content---------------------------------------------------------------
 
+function fetchClientList(){
+  createDivInContainer('personContainer')
+
+  fetch('http://localhost:5000/clients')//return promise
+  .then(response =>//the response
+    response.json()//getting the data
+      .then(data => data.client.forEach(client => {createClientCard(client)})))
+  .catch(err =>
+    console.error('Failed retrieving information', err)
+  )
+}
+
+
+
 function fetchClientById(clientId){
   fetch('http://localhost:5000/clients/' + clientId)
   .then(response =>
@@ -19,14 +33,40 @@ function fetchClientById(clientId){
   .catch(err =>
     console.error('Failed retrieving information', err)
   )  
-)};
+)
+
+};
+
+
+function fetchClientProject(clientId){
+  fetch('http://localhost:5000/projects/?personId=' + clientId)
+  .then(response => {
+    response.json().then(projecList => {
+        console.log('projectList:', projecList)
+        let projectsArray = projecList.projects;
+        let count = projecList.count;
+
+        if(count > 0 ){
+          projectsArray.forEach(project=> createProjectCard(project))
+        }else{
+          projects.innerHTML = `
+          <h4>Sem projetos no momento.</h4>
+          `
+        }
+
+      })
+  })
+  .catch(err =>
+    console.error('Failed retrieving information', err)
+  )
+}
 
 
 function createClientCard(client){
-  let outerDiv = document.createElement('div');
-  outerDiv.setAttribute('class', 'box hvr-underline-from-left')
+  let div = document.createElement('div');
+  div.setAttribute('class', 'box hvr-underline-from-left')
 
-  outerDiv.innerHTML += `
+  div.innerHTML += `
       <h3 class="nome">${client.firstName} ${client.lastName}</h3>
       <h4 class="contatoBox"><i class="fas fa-phone-alt contatoicone"></i>(${client.areaCode})${client.phone}</h4>
       <h4 class="contato"><i class="fas fa-mobile-alt contatoicone"></i>(${client.areaCode})${client.cellphone}</h4>  
@@ -34,7 +74,10 @@ function createClientCard(client){
   let info = document.createElement('i');
   info.setAttribute('class', 'fas fa-info-circle iconButton pointer info');
   info.setAttribute('id', `${client._id}`);
-  outerDiv.appendChild(info);
+  div.appendChild(info);
+
+  let personContainer = document.getElementById('personContainer');
+  personContainer.appendChild(div);
 
   info.addEventListener('click', event => {
       let clientId = event.target.id;
@@ -46,26 +89,12 @@ function createClientCard(client){
       }
 
   });
-  container.appendChild(outerDiv);
-
-}
-
-
-function fetchClientList(){
-    fetch('http://localhost:5000/clients')//return promise
-    .then(response =>//the response
-      response.json()//getting the data
-        .then(data => data.client.forEach(client => {createClientCard(client)})))
-    .catch(err =>
-      console.error('Failed retrieving information', err)
-    )
 }
 
 
 //popup Client innerHTML
 
 function createPopUp(client){
-  console.log(client.birthDate)
   document.getElementById('tituloPopup').innerHTML = `${client.firstName} ${client.lastName}`
   document.getElementById('birthDate').innerHTML = dateStamp(client.birthDate)
   document.getElementById('cpf').innerHTML = client.cpf
@@ -95,44 +124,23 @@ function createProjectCard(project){
 }
 
 
-function fetchClientProject(clientId){
-  fetch('http://localhost:5000/projects/?personId=' + clientId)
-  .then(response => {
-    response.json().then(projecList => {
-        console.log('projectList:', projecList)
-        let projectsArray = projecList.projects;
-        let count = projecList.count;
-
-        if(count > 0 ){
-          projectsArray.forEach(project=> createProjectCard(project))
-        }else{
-          projects.innerHTML = `
-          <h4>Sem projetos no momento.</h4>
-          `
-        }
-
-      })
-  })
-  .catch(err =>
-    console.error('Failed retrieving information', err)
-  )
-}
-
-
-
 
 //wraping everything
 document.getElementById('headerClients').addEventListener('click', event => {
-    //btn add client
-    let btnAdd = document.getElementById('addData');
+    //btn add client  
+
+    createBtnAdd('Client')
+    // btnAdd('Client')
+    // let btnAdd = document.getElementById('addDataClient');
 
     const addNewClient = event =>{
-
+      
       if(document.getElementById('formClient').style.display === "none"){   
         toggleDisplay('addClientAlert');
         toggleDisplay('formClient');
         toggleDisplay('formClientHeader');
       }
+
 
       toggle('clientForm')
       createForm()
@@ -140,10 +148,10 @@ document.getElementById('headerClients').addEventListener('click', event => {
       event.stopImmediatePropagation() //miguézão
     }
 
+    let btnAdd = document.getElementById('btnAddClient')
     btnAdd.addEventListener('click', addNewClient)
 
     //container and popup content
-    container.innerHTML = '';
     fetchClientList();
   
 })
@@ -157,19 +165,19 @@ function createForm(){
         <div class="formPart" id="formPart1">  
             <div class="formPair">
                 <label for="firstName">Nome</label>
-                <input type="text" name ="firstName" value="">
+                <input class="inputWrite" type="text" name ="firstName" value="">
             </div>
           <div class="formPair">
               <label for="lastName">Sobrenome</label>
-              <input type="text" name ="lastName" value="">
+              <input class="inputWrite" type="text" name ="lastName" value="">
           </div>
           <div class="formPair">
               <label for="cpf">CPF</label>
-              <input type="number" name ="cpf" value="">
+              <input class="inputWrite" type="number" name ="cpf" value="">
           </div>
           <div class="formPair">
               <label for="birthDate">Data nascimento</label>
-              <input type="date" name ="birthDate" value="">
+              <input class="inputWrite" type="date" name ="birthDate" value="">
           </div>
         </div> 
 
@@ -178,19 +186,19 @@ function createForm(){
       <div class="formPart" id="formPart2">    
         <div class="formPair">
             <label for="areaCode">DDD</label>
-            <input type="number" name ="areaCode" value="">
+            <input class="inputWrite" type="number" name ="areaCode" value="">
         </div>
         <div class="formPair">  
             <label for="phone">Telefone</label>
-            <input type="tel" name ="phone" value="">
+            <input class="inputWrite" type="tel" name ="phone" value="">
         </div>
         <div class="formPair">
             <label for="cellphone">Celular</label>
-            <input type="tel" name ="cellphone" value="">
+            <input class="inputWrite" type="tel" name ="cellphone" value="">
         </div>
         <div class="formPair">
             <label for="email">E-mail</label>
-            <input type="email" name ="email" value="">
+            <input  class="inputWrite" type="email" name ="email" value="">
         </div>
       </div>
         <div class="titleForm" id="titleAdress"><h3>Endereço</h3></div>
@@ -198,23 +206,23 @@ function createForm(){
       <div class="formPart" id="formPart3">  
         <div class="formPair">
             <label for="street">Rua</label>
-            <input type="text" name ="street" value="">
+            <input class="inputWrite" type="text" name ="street" value="">
         </div>
         <div class="formPair">
             <label for="neighb">Bairro</label>
-            <input type="text" name ="neighb" value="">
+            <input  class="inputWrite" type="text" name ="neighb" value="">
         </div>
         <div class="formPair">
             <label for="addressCompl">Complemento</label>
-            <input type="text" name ="addressCompl" value="">
+            <input class="inputWrite" type="text" name ="addressCompl" value="">
           </div>
         <div class="formPair">
             <label for="city">Cidade</label>
-            <input type="text" name ="city" value="">
+            <input class="inputWrite" type="text" name ="city" value="">
         </div>
         <div class="formPair">
             <label for="postalCode">CEP</label>
-            <input type="text" name ="postalCode" value="">
+            <input class="inputWrite" type="text" name ="postalCode" value="">
         </div>
       </div>
       <div class="btnSubmit"><button type="submit" id="submit">Enviar</button></div> 
@@ -223,15 +231,6 @@ function createForm(){
 }
 
 
-function fetchClientList(){
-  fetch('http://localhost:5000/clients')//return promise
-  .then(response =>//the response
-    response.json()//getting the data
-      .then(data => data.client.forEach(client => {createClientCard(client)})))
-  .catch(err =>
-    console.error('Failed retrieving information', err)
-  )
-}
 
 
 

@@ -33,8 +33,8 @@
            <header id="header-dados">
                 <img src="./imagens/logoicone.png" alt="logomarca" id="logoicone">
                 <ul class="menu">
-                    <button class = "thinerbutton" id="headerProjects">Projetos</button>
                     <button class = "thinerbutton" id="headerClients">Clientes</button>
+                    <button class = "thinerbutton" id="headerProjects">Projetos</button>
                     <button class = "thinerbutton">Equipe</button>
                     <button class = "thinerbutton">Parceiros</button>
                 </ul>
@@ -42,26 +42,29 @@
            </header>
 
             <div class="content">
-                <div class="content-header">
+                <div class="content-header" id="content-header">
                     <h2 id="tituloquery">Titulo</h2>
-                    <i class="fas fa-plus-circle iconButton pointer tooltip" id="addData">
+                    <div id="btnAdd">
+                    <!-- <i class="fas fa-plus-circle iconButton pointer tooltip" id="addData">
                         <span class="tooltiptext">Criar</span>
-                    </i>
+                    </i> -->
+                </div>
                     <form action="" class="campobusca" >
                         <input type="text" class ="yellowBox" id="inputSearch" onkeyup="filterByName()" placeholder = "Filtrar por nome" title = "Digite um nome">
                         <!-- <button type="submit" class="btnbusca" id="btnSearch"><i class="fas fa-search"></i></button> -->
                     </form>
                 </div>
-                <div id="query">                 
-
-                    <!-- CLIENTS CARDS -->
-
+                <div id="query">
+                    <!-- ELEMENTS BOXES-->
                 </div>
 
             </div>
 
             <footer>Desenvolvido por Daniela Bonfim</footer>
        </div>
+
+
+<!-- CLIENT QUERIES---------------------------------------------------------------->
 
         <!-- ADD CLIENT POPUP FORM---------------------------------------------------------------->
        <div class="container popup popupBD" id="clientForm">
@@ -73,11 +76,11 @@
                 <!-- FORM CREATED -->
             </form>
 
-            <div id="addClientAlert" class="responseAlert" style="display: none;">
+            <div id="addClientAlert" class="responseAlert addAlert" style="display: none;">
 
             </div>
        </div>
-         <!-- BANCO DADOS POP UP--------------------------------------------------------------------------->
+         <!-- BANCO DADOS CLIETN POP UP--------------------------------------------------------------------------->
        <div class="container popup popupBD" id="popupBD">
            <div id="infoClient">
                 <header class="popupHeader" id="popupHeader">
@@ -140,9 +143,100 @@
         
        
 
+
+
+<!-- PROJECT QUERIES---------------------------------------------------------------->
+        <div class="container popup popupBD" id="popupBdProject">
+            <div id="infoProject">
+                <header class="popupHeader" id="popupHeader">
+                    <div class="nameEdit">
+                        <h2 class="tituloPopup" id='tituloPopupProject'></h2>
+                        <i class="fas fa-trash iconButton delete pointer" id="deleteBtnProjects">
+                            <span class="tooltiptext">Excluir</span>
+                        </i>
+                    </div>
+                    <i class="fas fa-times-circle iconButton delete pointer" id="closeBtnProject" onclick="toggle('popupBdProject')"></i>
+                </header>
+                <div id="projectContent">
+                    <div class="dataProject">
+                        <div class="infoProjectPopup">
+                            <h3 class="popupBoxTitle">Descrição</h3>
+                            <div class="boxContent">
+                                <h4>Nome :</h4>
+                                <h5 id="projectName"><h5>
+                                <h4 id="startTitle">Início :</h4>
+                                <h5 id="start"></h4>
+                                <h4 id="finishTitle">Término :</h4>
+                                <h5 id="finish"></h4>
+                                <h4 id="personNameTitle">Cliente :</h4>
+                                <h5 id="nameComplete"></h5>
+                                <h4 id="personContactTitle">Contato :</h4>
+                                <h5 id="personContact"></h5>
+                            </div>
+                        </div>
+                        <div class="detailsPopup">
+                            <h3 class="popupBoxTitle">Details</h3>
+                            <div class="boxContent">
+                                <h4>Área :</h4>
+                                <h5 id="area"><h5>
+                                <h4 id="servicesTitle">Serviços :</h4>
+                                <h5 id="services"></h5>
+                                <h4 id="priceTitle">Valor cobrado:</h4>
+                                <h5 id="price"></h5>
+                            </div>
+                        </div>
+                        <div class="adressPopup">
+                            <h3 class="popupBoxTitle">Endereço :</h3>
+                            <div class="boxContent">
+                                <h4 id="streetTitleP">Rua :</h4>
+                                <h5 id="streetP"></h5>
+                                <h4 id="compTitleP">Comp. :</h4>
+                                <h5 id="complementP"></h5>
+                                <h4 id="districtTitleP">Bairro :</h4>
+                                <h5 id="districtP"></h5>
+                                <h4 id="cityTitleP">Cidade :</h4>
+                                <h5 id="cityP"></h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="imageProject" id="imageProject"> 
+                        <h3 class="popupBoxTitle">Foto</h3>
+                        <img id="imageProj" src="" alt="">
+                    </div>
+                </div>
+            </div> 
+            <div id="deleteProjectAlert" class="responseAlert" style= "display: none"></div>
+        </div>
+
+
+
+
+        <!-- ADD PROJECT POPUP FORM---------------------------------------------------------------->
+        <div class="container popup popupBD" id="projectForm">
+            <header class="popupHeader popupBD" id="formProjectHeader">
+                <h2>Novo Projeto</h2>
+                <i class="fas fa-times-circle pointer iconButton" id ="closeForm" onclick="toggle('projectForm')"></i>
+            </header>
+            <form class= "formAdd" id ="formProject">
+                <!-- FORM CREATED -->
+            </form>
+
+            <div id="addProjectAlert" class="responseAlert addAlert" style="display: none;">
+
+            </div>
+        </div>
+
+
+
+
+
+
         <script type='text/javascript' src='./views/clients.js'></script>
         <script type='text/javascript' src='./views/global.js'></script>
         <script type='text/javascript' src='./views/projects.js'></script>
     </body>
 
 </html>
+
+
+

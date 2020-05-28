@@ -69,7 +69,7 @@ function failureAlertForm(toggleFormPopupId, messageString, dataTypeAdd, formId,
   
     //display message
     addAlert.innerHTML = `
-      <h2 "alertH2" id="messageFailure">${messageString}</h2>
+      <h2 class="messageFailure" id="messageFailure">${messageString}</h2>
       <a class = "fatbutton outBtn" id="outBtn">Sair</a>
       <a class="fatbutton btnAddNew" id="btnAdd${dataTypeAdd}">Tentar novamente </a>
     `
@@ -101,7 +101,7 @@ function failureAlertForm(toggleFormPopupId, messageString, dataTypeAdd, formId,
   
 
 
-  function successAlertForm(toggleFormPopupId, messageString, dataTypeAdd, formId, alertId, headerId){
+  function successAlertForm(toggleFormPopupId, messageString, dataTypeAdd, formId, alertId, headerId, functionFetchAll){
     toggleDisplay(formId);
     toggleDisplay(alertId);
     toggleDisplay(headerId);
@@ -109,9 +109,9 @@ function failureAlertForm(toggleFormPopupId, messageString, dataTypeAdd, formId,
   
     //display message
     addAlert.innerHTML = `
-      <h2 id="messageSuccess">${messageString}</h2>
+      <h2 class="messageSuccess" id="messageSuccess">${messageString}</h2>
       <a class = "fatbutton btnAddNew" id="btnAdd${dataTypeAdd}">Adicionar outro</a>
-      <a class = "fatbutton outBtn" id="outBtnSuc">Sair</a>
+      <a class = "fatbutton outBtn outBtnSuc" id="outBtnSuc">Sair</a>
     `
     //button add another
     const btnAddNew = document.getElementById(`btnAdd${dataTypeAdd}`)
@@ -132,7 +132,7 @@ function failureAlertForm(toggleFormPopupId, messageString, dataTypeAdd, formId,
     container.innerHTML = '';
     outBtn.addEventListener('click', () => {
       toggle(toggleFormPopupId)
-      fetchClientList()
+      functionFetchAll()
     });
   
   }
@@ -141,7 +141,7 @@ function failureAlertForm(toggleFormPopupId, messageString, dataTypeAdd, formId,
   //ALERT DELETE
 
   
-function alertDelete(toggleDataPopupId, messageString, infoId, alertId){
+function alertDelete(toggleDataPopupId, messageString, infoId, alertId, functionFetchElement){
     toggleDisplay(infoId);
     toggleDisplay(alertId);
     const addAlert = document.getElementById(alertId);
@@ -156,7 +156,7 @@ function alertDelete(toggleDataPopupId, messageString, infoId, alertId){
     container.innerHTML = '';
     outBtn.addEventListener('click', () => {
       toggle(toggleDataPopupId)
-      fetchClientList()
+      functionFetchElement()
 
     });
   }
@@ -190,4 +190,36 @@ function dateStamp(date){
   let newstr = split[0].split("-");
   let dateStamp = newstr[2] + "/" + newstr[1] + "/" + newstr[0]
   return dateStamp
+}
+
+
+
+//ADD BOTÃO DE CRIAR NOVO ELEMENTO
+
+function createBtnAdd(elementType){
+  let divContentHeader = document.getElementById('btnAdd');
+  divContentHeader.innerHTML = '';
+
+  let i = document.createElement('i');
+  i.setAttribute('class', 'fas fa-plus-circle iconButton pointer tooltip')
+  i.setAttribute('id', `btnAdd${elementType}`)
+
+  let span = document.createElement('span');
+  span.setAttribute('class', 'tooltiptext');
+  span.innerHTML = `Criar ${elementType}`
+
+  i.appendChild(span);
+
+  divContentHeader.appendChild(i);
+}
+
+
+//CRIAR DIV DO CONTAINER
+
+function createDivInContainer(divName){
+  container.innerHTML = '';
+  let insideContainer = document.createElement('div');
+  insideContainer.setAttribute('id', divName);
+  container.append(insideContainer);
+
 }

@@ -7,31 +7,31 @@ const FKConstrain = require('../helpers/foreignKey')
 //getting Schema
 const Project = require('../models/projects');
 
-//-----HANDLING IMAGES--------------------
-const storage = multer.diskStorage({
-    destination: function(req, file, cb){
-        cb(null, './uploads/');
-    },
-    filename: function(req, file, cb){
-        cb(null, new Date().toISOString().replace(/:/g, '-') + file.originalname)
-    }
-});
+//-----HANDLING IMAGES MULTER--------------------
+// const storage = multer.diskStorage({
+//     destination: function(req, file, cb){
+//         cb(null, './uploads/');
+//     },
+//     filename: function(req, file, cb){
+//         cb(null, new Date().toISOString().replace(/:/g, '-') + file.originalname)
+//     }
+// });
 
-const fileFilter = (req, file, cb)=>{
-    if(file.mimetype === 'image/jpeg' || 'image/png' ){
-        cb(null, true);
-    }else{
-        cb(new Error('File format not supported'), false);
-    }
-};
+// const fileFilter = (req, file, cb)=>{
+//     if(file.mimetype === 'image/jpeg' || 'image/png' ){
+//         cb(null, true);
+//     }else{
+//         cb(new Error('File format not supported'), false);
+//     }
+// };
 
-const upload = multer({
-    storage: storage, 
-    limits: {
-        fileSize:  1024* 1024 * 5 //5megas
-    },
-    fileFilter: fileFilter,
-});
+// const upload = multer({
+//     storage: storage, 
+//     limits: {
+//         fileSize:  1024* 1024 * 5 //5megas
+//     },
+//     fileFilter: fileFilter,
+// });
 
 //-----OPTIONS--------------------
 
@@ -46,8 +46,8 @@ router.get('/',(req, res, next) => {
                     return{
                         _id: doc._id,
                         name: doc.name,
-                        startDate: doc.start,
-                        finishDate: doc.finish,
+                        start: doc.start,
+                        finish: doc.finish,
                         services: doc.services,
                         price: doc.price,
                         projectImage: doc.projectImage,
@@ -85,11 +85,16 @@ router.get('/:projectId', (req, res, next) => {
             res.status(200).json({
                 _id: doc._id,
                 name: doc.name,
-                startDate: doc.start,
-                finishDate: doc.finish,
+                start: doc.start,
+                finish: doc.finish,
                 services: doc.services,
+                area: doc.area,
                 price: doc.price,
                 projectImage: doc.projectImage,
+                street: doc.street,
+                neighb: doc.neighb,
+                addressCompl: doc.addressCompl,
+                city: doc.city,
                 personId: doc.personId
             }); 
         })
@@ -115,10 +120,15 @@ router.post('/', (req, res, next) => {
         name: req.body.name,
         start: req.body.start,
         finish: req.body.finish,
+        area:req.body.area,
         services: req.body.services,
         price: req.body.price,
         projectImage: imagePath,
         personId: req.body.personId,
+        street:req.body.street,
+        neighb:req.body.neighb,
+        addressCompl:req.body.addressCompl,
+        city:req.body.city,
     });
 
     project.save()
@@ -130,10 +140,15 @@ router.post('/', (req, res, next) => {
                     name: result.name,
                     _id: result._id,
                     start: result.start,
-                    finish: result.inish,
+                    finish: result.finish,
+                    area: result.area,
                     services: result.services,
                     price: result.price,
                     projectImage: result.path,
+                    street: result.street,
+                    neighb: result.neighb,
+                    addressCompl: result.addressCompl,
+                    city: result.city,
                     personId: result.personId,
                 }
             })

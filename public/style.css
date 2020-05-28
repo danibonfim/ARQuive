@@ -347,7 +347,6 @@ button:hover{
 }
 
 #query{
-    display: grid;
     justify-content: start;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     grid-gap: 15px;
@@ -359,6 +358,17 @@ button:hover{
     box-shadow: 4px 4px 2px rgba(165, 165, 165, 0.1);
     overflow: scroll;
     overflow-x: hidden;
+}
+
+#personContainer{
+    display: grid;
+    justify-content: start;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 15px;
+    grid-auto-flow: row;
+    grid-auto-rows: 100px;
+    border-radius: 5px;
+
 }
 
 .box {
@@ -561,13 +571,13 @@ ul{
 }
 
 /*BOX CONTENT INFOMATION*/
-#clientContent h4{
+.boxContent h4{
     font-size: 14px;
     font-weight: 700;
     text-transform: uppercase;
 }
 
-#clientContent h5{
+.boxContent h5{
     font-size: 15px;
 }
 
@@ -676,7 +686,7 @@ ul{
 
 }
 
-.formAdd input{
+.inputWrite{
     border: none;
     border-radius: 5px;
     background-color: rgba(229, 229, 229, .8);
@@ -686,8 +696,9 @@ ul{
 
 }
 
-.formAdd input:focus{
+.inputWrite:focus{
     background-color: rgba(229, 229, 229);
+    border-color:  rgba(217,109, 109);;
 
 }
 
@@ -770,8 +781,7 @@ ul{
     grid-row-start: 6;
     grid-row-end: 7;
     justify-self: center;
-    
-
+    align-self: end;
 }
 
 #submit{
@@ -815,12 +825,12 @@ ul{
     grid-template-rows: 50% 50%;
 }
 
-#messageFailure{
+.messageFailure{
     grid-column: 1/ espan 2;
     align-self: center;
 }
 
-#messageSuccess{
+.messageSuccess{
     grid-column: 1/ span 2;
     align-self: center;
 }
@@ -834,7 +844,7 @@ ul{
     align-self: center;
 }
 
-#addClientAlert .fatbutton{
+.addAlert .fatbutton{
     background-color: rgba(229, 229, 229);
     border: solid 2px rgba(217,109, 109);
     color: rgba(217,109, 109);
@@ -843,7 +853,7 @@ ul{
     text-transform: capitalize;
 }
 
-#addClientAlert .fatbutton:hover {
+.addAlert .fatbutton:hover {
     background-color: rgba(217,109, 109);
     color: rgba(229, 229, 229);
 }
@@ -858,12 +868,12 @@ ul{
 }
 
 
-#addClientAlert h2 {
+.addAlert h2 {
     color:rgb(110, 110, 110, .5);
     font-size: 1.8em;
 }
 
-#outBtnSuc{
+.outBtnSuc{
     width: ;
     align-self: center;
 }
@@ -925,3 +935,229 @@ ul{
     right: 0;
   }
   
+
+/*PROJECT CONTAINER--------------------*/
+
+#projectsContainer{
+    display: grid;
+    justify-content: start;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 15px;
+    grid-auto-flow: row;
+    grid-auto-rows: 240px;
+    border-radius: 5px;
+}
+
+.projectInfo {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.infoProject{
+    padding-left: 15px;
+}
+
+.infoProject:hover{
+    color:rgb(241, 146, 116, .8);
+}
+
+.projectInfo h3{
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+
+  /* PROJECT FORM----------------------- */
+
+
+#formProjectHeader{
+    border-color: #f4ce93;
+
+}
+
+#formProjectHeader h2{
+    color: #f4ce93;
+}
+
+#formProjectHeader .iconButton{
+    color: #f4ce93;
+    background-color: rgba(217,109, 109);
+    font-size: 28px;
+    justify-self: end;
+}
+
+#formProjectHeader .iconButton:hover{
+    transition: .2s;
+    color:#f19274;
+}
+
+
+#formProject h3{
+    color: #f2af84;
+}
+
+#formProject h3{
+    color: #f2af84;
+}
+
+
+#projectForm{
+    background-color: rgba(217,109, 109);
+    border-color: #e5e5e5;
+}
+
+#formProject .form{
+    grid-template-rows: 40% 5% 10% 5% 20% 1fr;
+}
+
+select{
+    width: 100%;
+}
+
+
+input[type="file"] {
+    font-size: 1em;
+
+}
+
+
+/*POPUP PROJECTS -----------------*/
+
+#projectContent{
+    display: grid;
+    grid-gap: 15px;
+    grid-auto-flow: dense;
+    overflow: scroll;
+    overflow-x: hidden;
+    padding: 10px 10px;
+    height: 630px;
+    grid-template-rows: 30% 1fr;
+}
+
+.dataProject {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 15px;
+}
+
+#imageProject{
+    display:grid;
+    grid-template-rows: 5% 1fr;
+}
+
+#imageProj{
+    width: 50%;
+    height: 90%;
+    border-radius: 10px;
+    justify-self: center;
+    align-self: end;
+}
+
+.infoProjectPopup .boxContent{
+    grid-template-columns: 36% 1fr;
+}
+
+#projectContent h5{
+    text-transform: capitalize;
+}
+
+/*Info */
+#startTitle{
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+
+#start{
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+}
+
+#finishTitle{
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+}
+
+#finish{
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+}
+
+#personNameTitle{
+    grid-column: 1 / 2;
+    grid-row: 4 / 5;
+}
+
+#nameComplete{
+    grid-column: 2 / 3;
+    grid-row: 4 / 5;
+}
+
+#personContactTitle{
+    grid-column: 1 / 2;
+    grid-row: 5 / 6;
+}
+
+#personContact{
+    grid-column: 2 / 3;
+    grid-row: 5 / 6;
+}
+
+
+/*Details */
+
+#servicesTitle{
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+
+#services{
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+}
+
+#priceTitle{
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+}
+
+#price{
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+}
+
+
+
+
+/*Adress */
+
+#compTitleP{
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+
+#complementP{
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+}
+
+#districtTitleP{
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+}
+
+#districtP{
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+}
+
+#cityTitleP{
+    grid-column: 1 / 2;
+    grid-row: 4 / 5;
+}
+
+#cityP{
+    grid-column: 2 / 3;
+    grid-row: 4 / 5;
+}
