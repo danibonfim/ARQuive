@@ -14,10 +14,15 @@ const clientRoutes = require('./api/routes/clients');
 const teamRoutes = require('./api/routes/team');
 
 //-----MONGODB CONECTION WITH MONGOOSE--------------------
-mongoose.connect(
-    'mongodb+srv://daniela:animal11@arquivedb-3ewau.mongodb.net/test?retryWrites=true&w=majority',
-    {useNewUrlParser: true, useUnifiedTopology: true}
-);
+const MONGODB_URI = 'mongodb+srv://daniela:animal11@arquivedb-3ewau.mongodb.net/test?retryWrites=true&w=majority'
+mongoose.connect(MONGODB_URI || 'mongodb://127.0.0.1:27017/ARQuive',
+    {useNewUrlParser: true, 
+    useUnifiedTopology: true
+});
+
+mongoose.connection.on('connected', () => {
+    console.log('Mongoose connected')
+})
 
 //------URL HOST  HEROKU ---------------------------------
 
