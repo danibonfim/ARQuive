@@ -1,5 +1,6 @@
 const container = document.getElementById('query');
 const projects = document.getElementById('projects');
+const url = 'https://arquive.herokuapp.com'
 
 
 
@@ -8,7 +9,7 @@ const projects = document.getElementById('projects');
 function fetchClientList(){
   createDivInContainer('personContainer')
 
-  fetch('http://localhost:5000/clients')//return promise
+  fetch(`${url}/clients`)//return promise
   .then(response =>//the response
     response.json()//getting the data
       .then(data => data.client.forEach(client => {createClientCard(client)})))
@@ -20,7 +21,7 @@ function fetchClientList(){
 
 
 function fetchClientById(clientId){
-  fetch('http://localhost:5000/clients/' + clientId)
+  fetch(`${url}/clients/` + clientId)
   .then(response =>
     response.json()
       .then(client =>  {
@@ -39,7 +40,7 @@ function fetchClientById(clientId){
 
 
 function fetchClientProject(clientId){
-  fetch('http://localhost:5000/projects/?personId=' + clientId)
+  fetch(`${url}/projects/?personId=` + clientId)
   .then(response => {
     response.json().then(projecList => {
         console.log('projectList:', projecList)
@@ -116,7 +117,7 @@ function createProjectCard(project){
   projectBox.setAttribute('class', 'imageBox');
   // projectBox.setAttribute('id', `${project._id}`);
   projectBox.innerHTML = `
-  <img src="http://localhost:5000/${project.projectImage}" alt="${project.name}">
+  <img src="${url}/${project.projectImage}" alt="${project.name}">
     <div class="projectInfo">
       <h4 class="projectTitle"">${project.name}</h4>
       <i class="fas fa-info-circle iconButton pointer info infoProject" id="${project._id}" personId="${project.personId}"></i>
@@ -137,7 +138,7 @@ function createProjectCard(project){
 //ProjectCard onclick Fetch project
 
 function fetchProjectClicked(projectId, personId){
-  fetch('http://localhost:5000/projects/' + projectId)
+  fetch(`${url}/projects/` + projectId)
   .then(response =>
     response.json()
       .then(project =>  {
@@ -282,7 +283,7 @@ function newClient(){
       //making a "copy" of the form input
       const formData = new FormData(document.getElementById('formClient'));
       document.getElementById("submit").disabled = true;
-      fetch('http://localhost:5000/clients',{
+      fetch(`${url}/clients`,{
         method: 'post',
         body: formData
       })
@@ -321,7 +322,7 @@ function deleteClient(clientId){
   deleteBtn.addEventListener('click', event =>{
     let clientId = event.target.getAttribute('clientId');
 
-    fetch(`http://localhost:5000/clients/${clientId}`,{
+    fetch(`${url}/clients/${clientId}`,{
             method: 'delete',
     })
     .then(response => response.json()

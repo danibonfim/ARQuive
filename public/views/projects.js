@@ -1,8 +1,10 @@
+const url = 'https://arquive.herokuapp.com'
+
 
 function fetchProjectList(){
   createDivInContainer('projectsContainer')
 
-  fetch('http://localhost:5000/projects')
+  fetch(`${url}/projects`)
   .then(response => 
     response.json().then(projectList => projectList.projects.forEach(project => createProjectBox(project)))
   ).catch(err =>
@@ -11,7 +13,7 @@ function fetchProjectList(){
 }
 
 function fetchProjectById(projectId, personId){
-  fetch('http://localhost:5000/projects/' + projectId)
+  fetch(`${url}/projects/` + projectId)
   .then(response =>
     response.json()
       .then(project =>  {
@@ -52,7 +54,7 @@ function createProjectPopup(project, personId){
 
   document.getElementById('tituloPopupProject').innerHTML=`${project.name}`;
   
-  fetch('http://localhost:5000/clients/' + personId)
+  fetch(`${url}/clients/` + personId)
   .then(response =>
     response.json()
       .then(client =>  {
@@ -73,7 +75,7 @@ function createProjectBox(project){
 
   div.innerHTML += `
     <div class="imageBox">
-        <img src="http://localhost:5000/${project.projectImage}" alt="${project.name}">
+        <img src=${url}/${project.projectImage}" alt="${project.name}">
         <div class="projectInfo" id="${project._id}id">
          <h3 class="projectTitle">${project.name}</h3>
         </div>
@@ -219,7 +221,7 @@ function createFormProject(){
     </div>
   `
 
-  fetch('http://localhost:5000/clients')
+  fetch(`${url}/clients`)
   .then(response => response.json().then(data => {
     projectForm.innerHTML = htmlBody;
     const clientDropBox = document.getElementById('clientIdProject');
@@ -241,7 +243,7 @@ function newProject(){
       //making a "copy" of the form input
       const formData = new FormData(document.getElementById('formProject'));
       document.getElementById("submit").disabled = true;
-      fetch('http://localhost:5000/projects',{
+      fetch(`${url}/projects`,{
         method: 'post',
         body: formData
       })
@@ -272,7 +274,7 @@ function deleteProject(projectId){
   deleteBtn.addEventListener('click', event =>{
     let projectId = event.target.getAttribute('projectId');
 
-    fetch(`http://localhost:5000/projects/${projectId}`,{
+    fetch(`${url}/projects/${projectId}`,{
             method: 'delete',
     })
     .then(response => response.json()

@@ -14,22 +14,28 @@ const clientRoutes = require('./api/routes/clients');
 const teamRoutes = require('./api/routes/team');
 
 //-----MONGODB CONECTION WITH MONGOOSE--------------------
-// mongoose.connect(
-//     'mongodb+srv://daniela:animal11@arquivedb-3ewau.mongodb.net/test?retryWrites=true&w=majority',
-//     {useNewUrlParser: true, useUnifiedTopology: true}
-// );
+mongoose.connect(
+    'mongodb+srv://daniela:animal11@arquivedb-3ewau.mongodb.net/test?retryWrites=true&w=majority',
+    {useNewUrlParser: true, useUnifiedTopology: true}
+);
+
+//------URL HOST  HEROKU ---------------------------------
+
+const url = 'https://arquive.herokuapp.com'
 
 
-const url = 'mongodb://127.0.0.1:27017/ARQuive'
-mongoose.connect(url, { useUnifiedTopology: true })
-const db = mongoose.connection
-db.once('open', _ => {
-  console.log('Database connected:', url)
-})
 
-db.on('error', err => {
-  console.error('connection error:', err)
-})
+
+// const url = 'mongodb://127.0.0.1:27017/ARQuive'
+// mongoose.connect(url, { useUnifiedTopology: true })
+// const db = mongoose.connection
+// db.once('open', _ => {
+//   console.log('Database connected:', url)
+// })
+
+// db.on('error', err => {
+//   console.error('connection error:', err)
+// })
 
 mongoose.Promise = global.Promise;
 
