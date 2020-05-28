@@ -21,7 +21,7 @@ mongoose.connect(
 
 //------URL HOST  HEROKU ---------------------------------
 
-const url = 'https://arquive.herokuapp.com'
+
 
 
 
