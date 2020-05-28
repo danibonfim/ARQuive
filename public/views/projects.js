@@ -1,6 +1,3 @@
-const url = 'https://arquive.herokuapp.com'
-
-
 function fetchProjectList(){
   createDivInContainer('projectsContainer')
 
