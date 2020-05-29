@@ -50,7 +50,7 @@ app.use('/uploads',express.static('uploads'));
 app.use(express.static(path.join(__dirname, "/public")));
 // app.use(formData.parse()); // Midleware for reading multipart/form-data
 const options = {
-    uploadDir: 'uploads',
+    uploadDir: '/app/uploads',
     autoClean: false
 };
    
