@@ -14,7 +14,7 @@ const clientRoutes = require('./api/routes/clients');
 const teamRoutes = require('./api/routes/team');
 
 //-----MONGODB CONECTION WITH MONGOOSE--------------------
-const MONGODB_URI = 'mongodb://heroku_66xzrf0g:animal11!@ds127190.mlab.com:27190/heroku_66xzrf0g'
+const MONGODB_URI = 'mongodb://dani:animal11@ds127190.mlab.com:27190/heroku_66xzrf0g'
 mongoose.connect(MONGODB_URI || 'mongodb://127.0.0.1:27017/ARQuive',
     {useNewUrlParser: true, 
     useUnifiedTopology: true
