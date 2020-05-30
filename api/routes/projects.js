@@ -42,6 +42,9 @@ const upload = require('../../config');
 
 //All Projects
 router.get('/',(req, res, next) => {
+    res.status(200).json(process.env)
+    return 
+    
     Project.find(req.query)
         .exec()
         .then(doc =>{
