@@ -72,7 +72,7 @@ function createProjectBox(project){
 
   div.innerHTML += `
     <div class="imageBox">
-        <img src=${project.projectImage}" alt="${project.name}">
+        <img src=${project.projectImage} alt="${project.name}">
         <div class="projectInfo" id="${project._id}id">
          <h3 class="projectTitle">${project.name}</h3>
         </div>
@@ -153,19 +153,19 @@ function createFormProject(){
     <div class="form">
       <div class="formPart" id="projectFormPart1">  
         <div class="formPair">
-            <label for="name">Nome</label>
+            <label for="name">Nome*</label>
             <input class="inputWrite" type="text" name ="name" value="">
         </div>
         <div class="formPair">
-            <label for="start">Data de início</label>
+            <label for="start">Data de início*</label>
             <input class="inputWrite" type="date" name ="start" value="">
         </div>
         <div class="formPair">
-            <label for="finish">Data de término</label>
+            <label for="finish">Data de término (não preencher se não estiver concluído)</label>
             <input class="inputWrite" type="date" name ="finish" value="">
         </div>
         <div class="formPair">
-            <label for="area">Área do projeto</label>
+            <label for="area">Área do projeto (m²)</label>
             <input class="inputWrite" type="number" name ="area" value="">
         </div>
         <div class="formPair">
@@ -173,7 +173,7 @@ function createFormProject(){
           <input class="inputWrite" type="text" name ="services" value="">
         </div>
         <div class="formPair">
-          <label for="price">Valor do contrato</label>
+          <label for="price">Valor do contrato (R$)</label>
           <input class="inputWrite" type="number" name ="price" value="">
         </div>
         <div class="formPair">
