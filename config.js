@@ -6,8 +6,8 @@ const dotenv= require('dotenv');
 dotenv.config();
 
 aws.config.update({
-    accessKeyId: process.env.ACCESS_KEY_ID ,
-    secretAccessKey: process.env.ASECRET_ACCESS_KEY,
+    accessKeyId: process.env.ACCESS_KEY_ID.toString(),
+    secretAccessKey: process.env.SECRET_ACCESS_KEY.toString(),
     region:'us-east-2',
 });
  
