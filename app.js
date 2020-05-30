@@ -5,8 +5,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require("path");
-const formData = require('express-form-data');
-const os = require("os");
+const dotenv= require('dotenv');
 
 //-----PATH ROUTES-----------------------
 const projectRoutes = require('./api/routes/projects');
@@ -14,8 +13,9 @@ const clientRoutes = require('./api/routes/clients');
 const teamRoutes = require('./api/routes/team');
 
 //-----MONGODB CONECTION WITH MONGOOSE--------------------
-const MONGODB_URI = 'mongodb://dani:animal11@ds127190.mlab.com:27190/heroku_66xzrf0g'
-mongoose.connect(MONGODB_URI || 'mongodb://127.0.0.1:27017/ARQuive',
+dotenv.config();
+const MONGODBURI = process.env.MONGODB_URI;
+mongoose.connect(MONGODBURI || 'mongodb://127.0.0.1:27017/ARQuive',
     {useNewUrlParser: true, 
     useUnifiedTopology: true
 });
@@ -23,20 +23,6 @@ mongoose.connect(MONGODB_URI || 'mongodb://127.0.0.1:27017/ARQuive',
 mongoose.connection.on('connected', () => {
     console.log('Mongoose connected')
 })
-
-
-
-
-// const url = 'mongodb://127.0.0.1:27017/ARQuive'
-// mongoose.connect(url, { useUnifiedTopology: true })
-// const db = mongoose.connection
-// db.once('open', _ => {
-//   console.log('Database connected:', url)
-// })
-
-// db.on('error', err => {
-//   console.error('connection error:', err)
-// })
 
 mongoose.Promise = global.Promise;
 
@@ -48,21 +34,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use('/uploads',express.static('uploads'));
 app.use(express.static(path.join(__dirname, "/public")));
-// app.use(formData.parse()); // Midleware for reading multipart/form-data
-const options = {
-    uploadDir: '/app/uploads',
-    autoClean: false
-};
-   
-// parse data with connect-multiparty. 
-app.use(formData.parse(options));
-// delete from the request all empty files (size == 0)
-app.use(formData.format());
-// change the file objects to fs.ReadStream 
-app.use(formData.stream());
-// union the body and the files
-app.use(formData.union());
- 
+
 //-----CORS ERRORS--------------------
 app.use((req, res, next)=>{
     res.header('Access-Control-Allow-Origin', '*');

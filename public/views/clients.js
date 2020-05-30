@@ -115,7 +115,7 @@ function createProjectCard(project){
   projectBox.setAttribute('class', 'imageBox');
   // projectBox.setAttribute('id', `${project._id}`);
   projectBox.innerHTML = `
-  <img src="${url}/${project.projectImage}" alt="${project.name}">
+  <img src="${project.projectImage}" alt="${project.name}">
     <div class="projectInfo">
       <h4 class="projectTitle"">${project.name}</h4>
       <i class="fas fa-info-circle iconButton pointer info infoProject" id="${project._id}" personId="${project.personId}"></i>

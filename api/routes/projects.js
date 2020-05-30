@@ -1,11 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-const multer = require('multer');
+// const multer = require('multer');
 const fs = require('fs');
-const FKConstrain = require('../helpers/foreignKey')
 //getting Schema
 const Project = require('../models/projects');
+
+const upload = require('../../config');
+
 
 //-----HANDLING IMAGES MULTER--------------------
 // const storage = multer.diskStorage({
@@ -32,6 +34,9 @@ const Project = require('../models/projects');
 //     },
 //     fileFilter: fileFilter,
 // });
+
+
+
 
 //-----OPTIONS--------------------
 
@@ -111,10 +116,9 @@ router.get('/:projectId', (req, res, next) => {
 //___________________________________________________________
 
 
-router.post('/', (req, res, next) => {
-    console.log(req.body);
-    const imagePath = req.files['projectImage'].path;
+router.post('/', upload.single('projectImage'),(req, res, next) => {
 
+    console.log(req.file)
     const project = new Project({
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
@@ -123,7 +127,7 @@ router.post('/', (req, res, next) => {
         area:req.body.area,
         services: req.body.services,
         price: req.body.price,
-        projectImage: imagePath,
+        projectImage: req.file.location,
         personId: req.body.personId,
         street:req.body.street,
         neighb:req.body.neighb,
@@ -144,7 +148,7 @@ router.post('/', (req, res, next) => {
                     area: result.area,
                     services: result.services,
                     price: result.price,
-                    projectImage: result.path,
+                    projectImage: result.projectImage,
                     street: result.street,
                     neighb: result.neighb,
                     addressCompl: result.addressCompl,

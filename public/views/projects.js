@@ -46,7 +46,7 @@ function createProjectPopup(project, personId){
   document.getElementById('complementP').innerHTML = `${project.addressCompl}`;
   document.getElementById('districtP').innerHTML = `${project.neighb}`;
   document.getElementById('cityP').innerHTML = `${project.city}`;
-  document.getElementById('imageProj').attributes.src.value = `http://localhost:5000/${project.projectImage}`
+  document.getElementById('imageProj').attributes.src.value = `${project.projectImage}`
   document.getElementById('imageProj').attributes.alt.value =`${project.name}`;
 
   document.getElementById('tituloPopupProject').innerHTML=`${project.name}`;
@@ -72,7 +72,7 @@ function createProjectBox(project){
 
   div.innerHTML += `
     <div class="imageBox">
-        <img src=${url}/${project.projectImage}" alt="${project.name}">
+        <img src=${project.projectImage}" alt="${project.name}">
         <div class="projectInfo" id="${project._id}id">
          <h3 class="projectTitle">${project.name}</h3>
         </div>
