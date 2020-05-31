@@ -318,9 +318,9 @@ function deleteClient(clientId){
       .then(text => {
         console.log(text)
         if(response.status === 200){
-          alertDelete('popupBD','Cliente deletado com sucesso!','infoClient','deleteClientAlert');
+          alertDelete('popupBD','Cliente deletado com sucesso!','infoClient','deleteClientAlert',fetchClientList());
         }else{
-          alertDelete('popupBD','Ocorreu um erro ao deletar o cliente','infoClient','deleteClientAlert');
+          alertDelete('popupBD','Ocorreu um erro ao deletar o cliente','infoClient','deleteClientAlert',fetchClientList());
         }
       }))
     .catch(error => {

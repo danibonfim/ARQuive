@@ -210,7 +210,7 @@ button:hover{
     border-radius: 5px;
     font-size: 25px;
     text-transform: capitalize;
-    padding:10px;
+    padding:14px;
     box-shadow: 3px 3px 2px rgba(164, 139, 101, 0.2);
     height: 60px;
 }
@@ -936,18 +936,18 @@ ul{
 
 /* DELETE ALERT ---------------*/
 
-#deleteClientAlert h2 {
+.deleteAlert h2 {
     color:rgba(229, 229, 229);
     font-size: 1.8em;
     align-self: center;
     grid-column: 1 / span 2;
 }
 
-#deleteClientAlert{
+.deleteAlert{
     background-color: rgba(217,109, 109);
 }
 
-#deleteClientAlert .outBtn{
+.deleteAlert .outBtn{
     background-color:  rgba(217,109, 109); 
     border: solid 2px  rgba(229, 229, 229);
     grid-column: span 2;
@@ -955,7 +955,7 @@ ul{
 }
 
 #deleteClientAlert .outBtn:hover{
-    background-color:  rgba(217,109, 109); 
+    background-color:  rgba(229, 229, 229); 
     color:rgba(217,109, 109);
 }
 
@@ -1223,6 +1223,7 @@ input[type="file"] {
     grid-column: 2 / 3;
     grid-row: 4 / 5;
 }
+
 
 
 /* INDEX CSS---------------------------- */
