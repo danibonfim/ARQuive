@@ -1,7 +1,6 @@
 const container = document.getElementById('query');
 const projects = document.getElementById('projects');
 const url = 'https://arquive.herokuapp.com'
-
 //-------Container content---------------------------------------------------------------
 
 function fetchClientList(){

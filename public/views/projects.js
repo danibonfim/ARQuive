@@ -174,7 +174,7 @@ function createFormProject(){
         </div>
         <div class="formPair">
           <label for="price">Valor do contrato (R$)</label>
-          <input class="inputWrite" type="number" name ="price" value="">
+          <input class="inputWrite" type="number" name ="price" value="" step="0.01">
         </div>
         <div class="formPair">
           <label for="personId">Cliente</label>
