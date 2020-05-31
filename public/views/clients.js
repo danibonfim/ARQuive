@@ -305,7 +305,7 @@ function newClient(){
 // DELETE CLIENT -------------------------------------------
 
 function deleteClient(clientId){
-  const deleteBtn = document.getElementById('deleteBtn');
+  const deleteBtn = document.getElementById('deleteBtnClient');
   deleteBtn.setAttribute('clientId', `${clientId}`)
 
   deleteBtn.addEventListener('click', event =>{

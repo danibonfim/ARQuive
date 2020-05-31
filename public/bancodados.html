@@ -35,8 +35,8 @@
                 <ul class="menu">
                     <button class = "thinerbutton" id="headerClients">Clientes</button>
                     <button class = "thinerbutton" id="headerProjects">Projetos</button>
-                    <button class = "thinerbutton">Equipe</button>
-                    <button class = "thinerbutton">Parceiros</button>
+                    <button class = "thinerbutton" id="headerTeam">Equipe</button>
+                    <button class = "thinerbutton" id="headerPartners">Parceiros</button>
                 </ul>
                 <a id= "voltarindex" href="./index.html"><i class="fas fa-arrow-circle-left iconeAcao" id="voltar"></i></a>
            </header>
@@ -94,7 +94,7 @@
                 <header class="popupHeader" id="popupHeader">
                     <div class="nameEdit">
                         <h2 class="tituloPopup" id='tituloPopup'></h2>
-                        <i class="fas fa-trash iconButton delete pointer" id="deleteBtn">
+                        <i class="fas fa-trash iconButton delete pointer deleteBtn" id="deleteBtnClient">
                             <span class="tooltiptext">Excluir</span>
                         </i>
                     </div>
@@ -159,8 +159,8 @@
                 <header class="popupHeader" id="popupHeader">
                     <div class="nameEdit">
                         <h2 class="tituloPopup" id='tituloPopupProject'></h2>
-                        <i class="fas fa-trash iconButton delete pointer" id="deleteBtnProjects">
-                            <span class="tooltiptext">Excluir</span>
+                        <i class="fas fa-trash iconButton delete pointer tooltip deleteBtn" id="deleteBtnProjects">
+                            <span class="tooltiptext">Excluir projeto</span>
                         </i>
                     </div>
                     <i class="fas fa-times-circle iconButton delete pointer" id="closeBtnProject" onclick="toggle('popupBdProject')"></i>
@@ -243,6 +243,7 @@
         <script type='text/javascript' src='./views/BdGlobal.js'></script>
         <script type='text/javascript' src='./views/global.js'></script>
         <script type='text/javascript' src='./views/projects.js'></script>
+        <script type='text/javascript' src='./views/otherHeaders.js'></script>
     </body>
 
 </html>

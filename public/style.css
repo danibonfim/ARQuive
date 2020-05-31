@@ -503,14 +503,14 @@ button:hover{
     display: inline-flex;
 }
 
-#deleteBtn{
+.deleteBtn{
     padding-left: 20px;
     align-self: flex-end;
     padding-bottom: 5px;
     font-size: 1.3em;
 }
 
-#deleteBtn:hover .tooltiptext {
+.deleteBtn:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
 }
@@ -1082,6 +1082,11 @@ input[type="file"] {
 
 /*POPUP PROJECTS -----------------*/
 
+#closeBtnProject{
+    justify-self: end;
+}
+
+
 #projectContent{
     display: grid;
     grid-gap: 15px;
@@ -1272,3 +1277,19 @@ td, th {
   tr:nth-child(even) {
     background-color: #dddddd;
   }
+
+
+  /* OUTROS HEADERS */
+#iconConstruction{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    height: 50%;
+    width: 83%;
+}
+
+#underConstruction{
+    width: 20%;
+    height: 40%;
+    align-self: center;
+}
