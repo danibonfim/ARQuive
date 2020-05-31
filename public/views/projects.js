@@ -115,7 +115,7 @@ function createProjectBox(project){
 document.getElementById('headerProjects').addEventListener('click', (event) => {
 
 
-  createBtnAdd('Project')
+  createBtnAdd('Project', 'Novo projeto')
   
   const addNewProject = event =>{
     

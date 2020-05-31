@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Escritório Arquitetura</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+        <meta name="viewport" content="widtd=device-widtd, initial-scale=1" /> 
         <!-- Required meta tags -->
         <meta charset="utf-8">
 
@@ -11,8 +11,8 @@
         <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet'>
         <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
 
-        <!-- Bootstrap CSS from a CDN. This way you don't have to include the bootstrap file yourself -->
-        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+        <!-- Bootstrap CSS from a CDN. tdis way you don't have to include tde bootstrap file yourself -->
+        <!-- <link rel="stylesheet" href="https://stackpatd.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
 
         <!-- Your own stylesheet -->
         <link rel="stylesheet" type="text/css" href="style.css">
@@ -32,40 +32,143 @@
     </head>
 
     <body>
-        <div class = "container">
+        <div class = "container blur">
             <header id = "header-index">
                 <img src="./imagens/logo.png" alt="logomarca" id="logo">
                 <h1> protótipo de banco de dados para escritórios de Arquitetura</h1>
             </header>
             
             <ul class="buttonlist">
-                <button class="thinbutton" id ="btnreq">Requisitos</button>
+                <button class="thinbutton" id ="btnReq">Requisitos</button>
                 <button class="thinbutton" id ="btnguia">Guia do usuário</button>
                 <button class="thinbutton" id ="btnestrutura">Design BD</button>
             
-                <a class = "fatbutton" id="btnTestar" href="./bancodados.html">Testar Banco de Dados</a>
+                <a class = "fatbutton" id="btnTestar" href="./bancodados.html">Testar Sistema</a>
 
 
             </ul>
         
             <footer>Desenvolvido por Daniela Bonfim</footer>
-
-<!-- REQUISITOS -->
-        <!-- </div>
-        <div class="modal" id = "modal-requisitos">
-            <header class="modal-header">
-                <div class="title"> Requisitos</div>
-                <span class="close">&times;</span>
-            </header>
-            <div class="modal-body">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit ad eligendi illum molestiae incidunt ipsam, quod esse dolorem fugit cumque! Sint ut voluptate deleniti laborum ducimus! Quo unde velit ipsa omnis aut non vero expedita tempore, minus odit quae architecto asperiores veritatis vel earum culpa. Cupiditate adipisci aspernatur aut dolorem maiores quia ad amet doloremque quidem neque magni, placeat maxime necessitatibus modi inventore excepturi nostrum alias, expedita repudiandae, soluta optio sed nisi autem. Facilis hic dolor soluta nihil inventore molestiae.
-            </div>
-            
         </div>
-        <div id="overlay"></div> -->
+
+    <!-- REQUISITOS -->
+        <div class="container popup popupIndex" id="requirementsPopup">
+            <header class="popupHeader">
+                <h2 class="tituloPopup" id='titleRequirements'>Requisitos</h2>
+                <i class="fas fa-times-circle iconButton delete pointer" id="closeBtn"></i>
+            </header>
+            <div class="contentIndex">
+                <p>Este arquivo visa documentar a proposta do desenvolvimento de um sistema
+                    de armazenamento de dados para escritórios de Arquitetura.
+                </p>
+                <h1>Restrições</h1>
+                <p>A interface do projeto deve ser totalmente voltada à WEB.</p>
+                <h1>Premissas</h1>
+                <p>O cliente deverá disponibilizar tanto um servidor web, quanto uma plataforma
+                    de armazenamento em nuvem.    
+                </p>
+                <h1>Requisitos Funcionais</h1>
+                <table>
+                    <tr>
+                        <th>Sigla</th>
+                        <th>Descrição</th>
+                        <th>Tipo</th>
+                    </tr>
+                    <tr>
+                        <td>RQ01</td>
+                        <td>O sistema deve permitir o cadastro das principais informações dos clientes</td>
+                        <td>Essencial</td>
+                    </tr>
+                    <tr>
+                        <td>RQ02</td>
+                        <td>O sistema deve permitir o cadastro das principais informações dos projetos</td>
+                        <td>Essencial</td>
+                    </tr>
+                    <tr>
+                        <td>RQ03</td>
+                        <td>O sistema deve permitir o cadastro das principais informações dos prestadores de serviços (parceiros)</td>
+                        <td>Essencial</td>
+                    </tr>
+                    <tr>
+                        <td>RQ04</td>
+                        <td>O sistema deve permitir o cadastro das principais informações dos funcionários</td>
+                        <td>Essencial</td>
+                    </tr>
+                    <tr>
+                        <td>RQ05</td>
+                        <td>O sistema deve ser acessado através de login e senha</td>
+                        <td>Essencial</td>
+                    </tr>
+                    <tr>
+                        <td>RQ06</td>
+                        <td>O sistema deve relacionar os seus dados:os clientes com seus repectivos projetos;
+                            os fornecedores com os projetos para os quais foram contratadados;
+                            os funcionarios com os projetos nos quais trabalharam.
+                        </td>
+                        <td>Essencial</td>
+                    </tr>
+                    <tr>
+                        <td>RQ07</td>
+                        <td>O sistema deve permitir o envio de arquivos de projetos com as principais extensões do ramo:
+                            CAD(.dwg), Sketchup (.skp), Revit (.rvt), ArchiCad (PLN), Excel (.xls), além de imagens (.jpeg e .png) e PDF.</td>
+                        <td>Importante</td>
+                    </tr>
+                    <tr>
+                        <td>RQ08</td>
+                        <td>O sistema deve permitir o cadastro de "abas" na sessão de arquivos de projetos de acordo com a fase especificada.
+                            A interface de acesso aos arquivos, também, a data de envio, o seu título e o nome de quem realizou o upload.         
+                        </td>
+                        <td>Essencial</td>
+                    </tr>
+                    <tr>
+                        <td>RQ09</td>
+                        <td>O sistema deve vincular aos projetos os orçamentos recebidos dos fornecedores cadastrados</td>
+                        <td>Importante</td>
+                    </tr>
+                    <tr>
+                        <td>RQ010</td>
+                        <td>O sistema deve permitir a exclusão e edicação de dados cadastrados</td>
+                        <td>Essencial</td>
+                    </tr>
+                    <tr>
+                        <td>RQ011</td>
+                        <td>O sistema deve alertar, através de e-mail, os funcionários quanto à datas de aniversário dos clientes</td>
+                        <td>Desejável</td>
+                    </tr>
+                </table>
+
+                <h1>Requisitos Não Funcionais</h1>
+                <table>
+                    <tr>
+                        <th>Sigla</th>
+                        <th>Descrição</th>
+                    </tr>
+                    <tr>
+                        <td>RNF01</td>
+                        <td>O sistema deve operar em interface restrita à WEB.</td>
+                    </tr>
+                    <tr>
+                        <td>RNF02</td>
+                        <td>A sincronização dos dados deverá ser realizada em tempo real.</td>
+                    </tr>
+                    <tr>
+                        <td>RNF03</td>
+                        <td>O sistema deve possuir segurança dos dados cadastrados.</td>
+                    </tr>
+                    <tr>
+                        <td>RNF04</td>
+                        <td>O sistema deve ser robusto para atender à demanda simultânea e escalável para futuras implementações.</td>
+                    </tr>
+                </table>
+            </div>
+
+
+        
+
 
 <!-- SCRIPT -->
-        <script type="text/javascript" src="script.js"></script>
+        <script type='text/javascript' src='./views/global.js'></script>
+        <script type="text/javascript" src="./views/index.js"></script>
        
     </body>
 

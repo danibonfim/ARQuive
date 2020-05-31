@@ -156,17 +156,9 @@ function fetchProjectClicked(projectId, personId){
 
 
 
-
-
-
-
-
-
-
-
 function loadClients(){
     document.getElementById("headerClients").focus();
-    createBtnAdd('Client')
+    createBtnAdd('Client', 'Novo cliente')
   
     const addNewClient = event =>{
       
@@ -313,6 +305,29 @@ function newClient(){
 
 // DELETE CLIENT -------------------------------------------
 
+// CASCADE PROJECT
+
+function cascadeProjects(clientId){
+  fetch(`${url}/projects/?personId=` + clientId)
+  .then(response => {
+    response.json().then(projecList => {
+        let projectsArray = projecList.projects;
+        let count = projecList.count;
+
+        if(count > 0 ){
+          projectsArray.forEach(project=> deleteClientCascadeProject(project._id))
+        }else{
+          return
+        }
+      })
+  })
+  .catch(err =>
+    console.error('Failed retrieving information', err)
+  )
+}
+
+
+
 function deleteClient(clientId){
   const deleteBtn = document.getElementById('deleteBtn');
   deleteBtn.setAttribute('clientId', `${clientId}`)
@@ -327,6 +342,10 @@ function deleteClient(clientId){
       .then(text => {
         console.log(text)
         if(response.status === 200){
+
+          cascadeProjects(clientId)
+          console.log(clientId + 'CLIENT IIIDDDDDD')
+
           alertDelete('popupBD','Cliente deletado com sucesso!','infoClient','deleteClientAlert');
         }else{
           alertDelete('popupBD','Ocorreu um erro ao deletar o cliente','infoClient','deleteClientAlert');
