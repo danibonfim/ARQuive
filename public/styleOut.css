@@ -1,3 +1,13 @@
+
+#loaderWrapper{
+  width: 100%;
+  height: 100%;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+
+
 .lds-roller {
     display: inline-block;
     position: relative;

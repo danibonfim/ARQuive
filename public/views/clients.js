@@ -1,4 +1,4 @@
-const container = document.getElementById('query');
+const container = document.getElementById('queryContainer');
 const projects = document.getElementById('projects');
 const url = 'https://arquive.herokuapp.com'
 //-------Container content---------------------------------------------------------------

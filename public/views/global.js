@@ -20,6 +20,10 @@ function toggleDisplay(elementId, displayType = "grid"){
 
 
 
+
+
+
+
   //LOAD EVENT
   // function createLoader(elementId){
   //   const div = document.getElementById(elementId);

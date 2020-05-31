@@ -167,3 +167,13 @@ function createDivInContainer(divName){
 
 
 
+//
+let query = document.getElementById('container-dados');
+container.onload = loader()
+
+
+function loader(){
+  let loader = document.getElementById('loaderWrapper');
+  loader.style.display = 'none'
+
+}
