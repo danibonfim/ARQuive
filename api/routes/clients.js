@@ -3,9 +3,8 @@ const router = express.Router();
 const mongoose = require('mongoose');
 
 const Project = require('../models/projects');
-
-
 const Client = require('../models/person');
+const globalFunctions = require('./globalBack');
 
 //-----OPTIONS--------------------
 
@@ -146,12 +145,28 @@ router.post('/', (req, res, next) => {
 
 router.delete('/:clientId', (req, res, next) => {
     const id = req.params.clientId;
+
+  
+   function cascadeProjects(id){
+
+       Project.find({
+           personId: id
+       }, (err, projectList)=>{
+           projectList.forEach(project => {
+                globalFunctions.deleteProjectAndImage(project._id);
+           })
+       });
+
+    }
+
+
     Client.deleteOne({_id: id})
         .exec()
         .then( result => {
+            cascadeProjects(id);
             res.status(200).json({
-                message: 'The client has been deleted!',
-            });
+                message: 'O cliente e seus respectivos projetos foram apagados'
+            })
         })
         .catch(err => {
             console.log(err);

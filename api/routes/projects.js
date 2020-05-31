@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-// const multer = require('multer');
 const fs = require('fs');
 //getting Schema
 const Project = require('../models/projects');
+const globalFunction = require('./globalBack')
+const {upload, s3} = require('../../config');
 
-const upload = require('../../config');
 
 
 //-----HANDLING IMAGES MULTER--------------------
@@ -207,12 +207,24 @@ router.patch('/:projectId',(req, res, next) => {
 
 router.delete('/:projectId', (req, res, next) => {
     const id = req.params.projectId;
+
+    let query = Project.where({
+        _id: id
+    });
+
+    query.findOne((err, project) => {
+        globalFunction.delImageS3(project.projectImage)
+    });
+
     Project.deleteOne({_id: id})
         .exec()
         .then( result => {
+
+            console.log(result)
+
             res.status(200).json({
                 message: 'The project has been deleted!',
-            });
+            })
         })
         .catch(err => {
             console.log(err);
@@ -224,3 +236,5 @@ router.delete('/:projectId', (req, res, next) => {
 
 
 module.exports = router;
+
+                     

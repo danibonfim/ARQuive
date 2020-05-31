@@ -167,27 +167,3 @@ function createDivInContainer(divName){
 
 
 
-//DELETAR PROJETOS POR ID
-
-function deleteClientCascadeProject(projectId){
-    fetch(`${url}/projects/${projectId}`,{
-            method: 'delete',
-    })
-    .then(response => response.json()
-      .then(text => {
-        console.log(text)
-        let params = {
-          Bucket: 'arquive',
-          Key: `${projectId.projectImage}`
-        };
-        
-        s3.deleteObject(params, function(err, data) {
-          if (err) console.log(err, err.stack); // an error occurred
-          else     console.log(data);           // successful response
-        });
-
-      }))
-    .catch(error => {
-      console.log(error)
-    });
-};
