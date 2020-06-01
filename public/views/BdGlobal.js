@@ -18,7 +18,7 @@ function filterByName() {
   
 
 //ALTERAR TÍTULO DAS QUERRYS
-let tituloPagina = document.getElementById("tituloquery");
+let tituloPagina = document.getElementById("queryTitle");
 let menu = document.getElementsByClassName('menu')[0]
 menu.childNodes.forEach((button) =>{
     button.addEventListener('click', alteraTitulo)

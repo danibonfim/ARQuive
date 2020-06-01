@@ -23,7 +23,7 @@ h2{
     font-weight: 700;
     color: #d64c4c;
     margin:0;
-    font-size: 30px;
+    font-size: 1.8em;
 }
 
 h3{
@@ -258,12 +258,21 @@ button:hover{
 
 /** PAGINA DO BANCO DE DADOS **/
 
+#queryTitle h2{
+    font-size: 25px;
+}
+
+.btnAdd{
+    font-size: 25px;
+}
+
 
 .iconButton{
     border:none;
     font-size: 28px;
     margin-right: 0;
-    color:rgb(214, 76, 76, .6)
+    color:rgb(214, 76, 76, .6);
+    margin-left: 10px;
 }
 
 .iconButton:hover{
