@@ -4,11 +4,8 @@
 
 function closeFormProjects(){
   toggle('projectForm');
-  fetchClientList();
+  fetchProjectList();
 }
-
-
-
 
 
 function fetchProjectList(){
@@ -41,6 +38,8 @@ function fetchProjectById(projectId, personId){
 
 
 function createProjectPopup(project, personId){
+  let imageDiv = document.getElementById('imageProj');
+  imageDiv.attributes.src.value= '';
 
     let finishDate = project.finish
     if(finishDate === null){
@@ -291,6 +290,10 @@ function newProject(){
 function deleteProject(projectId){
   const deleteBtn = document.getElementById('deleteBtnProjects');
   deleteBtn.setAttribute('projectId', `${projectId}`)
+
+
+  const spanDelete = document.getElementById('spanDeleteProject');
+  spanDelete.setAttribute('projectId', `${projectId}`)
 
   deleteBtn.addEventListener('click', event =>{
     let projectId = event.target.getAttribute('projectId');

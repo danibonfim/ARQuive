@@ -160,11 +160,12 @@ function createDivInContainer(divName){
 
 //
 let query = document.getElementById('query')
-container.onload = loader()
+container.onload = loader('loaderWrapper')
 
 
-function loader(){
-  let loader = document.getElementById('loaderWrapper');
+function loader(loaderWrapper){
+  let loader = document.getElementById(loaderWrapper);
   loader.style.display = 'none'
 
 }
+

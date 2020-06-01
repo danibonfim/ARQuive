@@ -318,6 +318,9 @@ function deleteClient(clientId){
   const deleteBtn = document.getElementById('deleteBtnClient');
   deleteBtn.setAttribute('clientId', `${clientId}`)
 
+  const spanDelete = document.getElementById('spanDeleteClient');
+  spanDelete.setAttribute('clientId', `${clientId}`)
+
   deleteBtn.addEventListener('click', event =>{
     let clientId = event.target.getAttribute('clientId');
 

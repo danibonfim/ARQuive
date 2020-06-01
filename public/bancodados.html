@@ -55,7 +55,7 @@
                     </form>
                 </div>
                 <div id="query" >
-                    <div id = "loaderWrapper">
+                    <div id = "loaderWrapper" class="loaderWrapper">
                         <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
                     </div>
                     <div id="queryContainer">
@@ -95,7 +95,7 @@
                     <div class="nameEdit">
                         <h2 class="tituloPopup" id='tituloPopup'></h2>
                         <i class="fas fa-trash iconButton delete pointer deleteBtn" id="deleteBtnClient">
-                            <span class="tooltiptext">Excluir</span>
+                            <span class="tooltiptext" id="spanDeleteClient">Excluir Cliente</span>
                         </i>
                     </div>
                     <i class="fas fa-times-circle iconButton delete pointer" id="closeBtn" onclick="toggle('popupBD')"></i>
@@ -159,9 +159,9 @@
                 <header class="popupHeader" id="popupHeader">
                     <div class="nameEdit">
                         <h2 class="tituloPopup" id='tituloPopupProject'></h2>
-                        <i class="fas fa-trash iconButton delete pointer tooltip deleteBtn" id="deleteBtnProjects">
-                            <span class="tooltiptext">Excluir projeto</span>
-                        </i>
+                        <a class="fas fa-trash iconButton delete pointer tooltip deleteBtn" id="deleteBtnProjects">
+                            <span class="tooltiptext" id="spanDeleteProject">Excluir projeto</span>
+                        </a>
                     </div>
                     <i class="fas fa-times-circle iconButton delete pointer" id="closeBtnProject" onclick="toggle('popupBdProject')"></i>
                 </header>
@@ -207,7 +207,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="imageProject" id="imageProject"> 
+                    <div class="imageProject" id="imageProject" > 
                         <h3 class="popupBoxTitle">Foto</h3>
                         <img id="imageProj" src="" alt="">
                     </div>

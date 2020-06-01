@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+span{
+    pointer-events: none;
+}
+
 body{
     margin: 0 auto;
     background: #777777;
@@ -114,6 +118,9 @@ button:hover{
     background-color: rgb(202, 202, 202, .5);
     padding: 4px;
     border-radius: 5px;
+    pointer-events:none;
+    cursor: default;
+
 }
 
 
@@ -476,6 +483,7 @@ button:hover{
 
 
 /*POP UP  BD --------------------*/
+
 
 .popup{
     display: grid;
@@ -1298,7 +1306,7 @@ td, th {
     justify-content: center;
     position: absolute;
     height: 50%;
-    width: 83%;
+    width: 50%;
 }
 
 #underConstruction{
