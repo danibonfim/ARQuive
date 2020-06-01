@@ -79,7 +79,7 @@ function failureAlertForm(toggleFormPopupId, messageString, dataTypeAdd, formId,
     addAlert.innerHTML = `
       <h2 class="messageSuccess" id="messageSuccess">${messageString}</h2>
       <a class = "fatbutton btnAddNew" id="btnAdd${dataTypeAdd}">Adicionar outro</a>
-      <a class = "fatbutton outBtn outBtnSuc" id="outBtnSuc">Sair</a>
+      <a class = "fatbutton outBtn outBtnSuc" id="outBtnSuc${dataTypeAdd}">Sair</a>
     `
     //button add another
     const btnAddNew = document.getElementById(`btnAdd${dataTypeAdd}`)
@@ -92,7 +92,7 @@ function failureAlertForm(toggleFormPopupId, messageString, dataTypeAdd, formId,
     });
   
     //button out
-    const outBtn= document.getElementById('outBtnSuc');
+    const outBtn= document.getElementById(`outBtnSuc${dataTypeAdd}`);
     container.innerHTML = '';
     outBtn.addEventListener('click', () => {
       toggle(toggleFormPopupId)
@@ -129,7 +129,6 @@ function alertDelete(toggleDataPopupId, messageString, infoId, alertId, function
 //ADD BOTÃO DE CRIAR NOVO ELEMENTO
 
 function createBtnAdd(elementType, spanText){
-  console.log('Rodei!')
   let divContentHeader = document.getElementById('btnAdd');
   divContentHeader.innerHTML = '';
 

@@ -461,7 +461,8 @@ button:hover{
     font-size: .8em;
 }
 .nome{
-    grid-column: 1 / span 2
+    grid-column: 1 / span 2;
+    overflow: hidden;
 }
 
 .info{

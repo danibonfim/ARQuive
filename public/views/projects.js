@@ -54,7 +54,7 @@ function createProjectPopup(project, personId){
   document.getElementById('finish').innerHTML = finishDate;
   document.getElementById('area').innerHTML = `${project.area} m²`;
   document.getElementById('services').innerHTML = `${project.services}`;
-  document.getElementById('price').innerHTML = `${project.price}`;
+  document.getElementById('price').innerHTML = `R$${project.price}`;
   document.getElementById('streetP').innerHTML = `${project.street}`;
   document.getElementById('complementP').innerHTML = `${project.addressCompl}`;
   document.getElementById('districtP').innerHTML = `${project.neighb}`;
@@ -166,11 +166,11 @@ function createFormProject(){
     <div class="form">
       <div class="formPart" id="projectFormPart1">  
         <div class="formPair">
-            <label for="name">Nome*</label>
+            <label for="name">Nome *</label>
             <input class="inputWrite" type="text" name ="name" value="">
         </div>
         <div class="formPair">
-            <label for="start">Data de início*</label>
+            <label for="start">Data de início *</label>
             <input class="inputWrite" type="date" name ="start" value="">
         </div>
         <div class="formPair">
@@ -182,15 +182,15 @@ function createFormProject(){
             <input class="inputWrite" type="number" name ="area" value="" step="0.01">
         </div>
         <div class="formPair">
-          <label for="services">Serviços prestados</label>
+          <label for="services">Serviços prestados *</label>
           <input class="inputWrite" type="text" name ="services" value="">
         </div>
         <div class="formPair">
-          <label for="price">Valor do contrato (R$)</label>
+          <label for="price">Valor do contrato *(R$)</label>
           <input class="inputWrite" type="number" name ="price" value="" step="0.01">
         </div>
         <div class="formPair">
-          <label for="personId">Cliente</label>
+          <label for="personId">Cliente *</label>
           <div class="inputWrite">
             <select class= "inputWrite" name='personId' id='clientIdProject'></select>
           </div>
@@ -201,7 +201,7 @@ function createFormProject(){
 
       <div class="formPart" id="projectFormPart2">    
         <div class="formPair">
-            <label for="projectImage">Imagem PNG ou JPEG</label>
+            <label for="projectImage">Imagem PNG ou JPEG *</label>
             <input class= "inputWrite" type="file" name ="projectImage" value="">
         </div>
 

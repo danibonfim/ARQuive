@@ -1,7 +1,7 @@
 const container = document.getElementById('queryContainer');
 const projects = document.getElementById('projects');
-const url = 'https://arquive.herokuapp.com'
-// const url = 'http://localhost:5000'
+// const url = 'https://arquive.herokuapp.com'
+const url = 'http://localhost:5000'
 //-------Container content---------------------------------------------------------------
 
 //BTN CLOSE FORM
@@ -204,11 +204,11 @@ function createForm(){
     <div class="form">
         <div class="formPart" id="formPart1">  
             <div class="formPair">
-                <label for="firstName">Nome</label>
+                <label for="firstName">Nome *</label>
                 <input class="inputWrite" type="text" name ="firstName" value="">
             </div>
           <div class="formPair">
-              <label for="lastName">Sobrenome</label>
+              <label for="lastName">Sobrenome *</label>
               <input class="inputWrite" type="text" name ="lastName" value="">
           </div>
           <div class="formPair">
@@ -225,15 +225,15 @@ function createForm(){
 
       <div class="formPart" id="formPart2">    
         <div class="formPair">
-            <label for="areaCode">DDD</label>
+            <label for="areaCode">DDD (apenas números)</label>
             <input class="inputWrite" type="number" name ="areaCode" value="">
         </div>
         <div class="formPair">  
-            <label for="phone">Telefone</label>
+            <label for="phone">Telefone (apenas números)</label>
             <input class="inputWrite" type="tel" name ="phone" value="">
         </div>
         <div class="formPair">
-            <label for="cellphone">Celular</label>
+            <label for="cellphone">Celular (apenas números)</label>
             <input class="inputWrite" type="tel" name ="cellphone" value="">
         </div>
         <div class="formPair">
@@ -261,7 +261,7 @@ function createForm(){
             <input class="inputWrite" type="text" name ="city" value="">
         </div>
         <div class="formPair">
-            <label for="postalCode">CEP</label>
+            <label for="postalCode">CEP(apenas números)</label>
             <input class="inputWrite" type="text" name ="postalCode" value="">
         </div>
       </div>
