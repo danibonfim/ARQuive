@@ -26,7 +26,7 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
 
         <!-- Icone browser-->
-        <link rel="shortcut icon" type="image/x-icon" href="./imagens/favicon.ico">
+        <link rel="shortcut icon" type="image/x-icon" href="https://arquive.s3.us-east-2.amazonaws.com/imagensSite/favicon.ico">
 
 
     </head>
@@ -34,14 +34,14 @@
     <body>
         <div class = "container blur">
             <header id = "header-index">
-                <img src="./imagens/logo.png" alt="logomarca" id="logo">
+                <img src="https://arquive.s3.us-east-2.amazonaws.com/imagensSite/logo.png" alt="logomarca" id="logo">
                 <h1> protótipo de banco de dados para escritórios de Arquitetura</h1>
             </header>
             
             <ul class="buttonlist">
                 <button class="thinbutton" id ="btnReq">Requisitos</button>
                 <button class="thinbutton" id ="btnGuide">Guia do usuário</button>
-                <button class="thinbutton" id ="btnestrutura">Design BD</button>
+                <button class="thinbutton" id ="btnDoc">Documentação</button>
             
                 <a class = "fatbutton" id="btnTestar" href="./bancodados.html">Testar Sistema</a>
 
@@ -171,12 +171,55 @@
                 <i class="fas fa-times-circle iconButton delete pointer" id="closeBtnGuide"></i>
             </header>
             <div class="contentIndex">
-                <img src="./imagens/guia1.png" alt="imagem guia" class="guideImage">
-                <img src="./imagens/guia2.png" alt="imagem guia" class="guideImage">
-  
+                <h1>Fluxo</h1>
+                <p>O sistema foi construído com a característica de que um cliente pode não possuir projetos, porém, todos os projetos devem pertencer a um, e somente um, cliente.
+                    Portanto, é necessário que se siga o fluxo de primeiro inserir o cliente para, então, adicionar o projeto.
+                </p>
+                <h2>Adicionar novos elementos</h2>
+                <h1>Novo cliente</h1>
+                <p>1)</p>
+                <img src="https://arquive.s3.us-east-2.amazonaws.com/imagensSite/guia1.png" alt="imagem guia" class="guideImage">
+                <p>2)</p>
+                <img src="https://arquive.s3.us-east-2.amazonaws.com/imagensSite/guia2.png" alt="imagem guia" class="guideImage">
+                <h1>Novo projeto</h1>
+                <p>1)</p>
+                <img src="https://arquive.s3.us-east-2.amazonaws.com/imagensSite/guia3.png" alt="imagem guia" class="guideImage">
+                <p>2)</p>
+                <img src="https://arquive.s3.us-east-2.amazonaws.com/imagensSite/guia4.png" alt="imagem guia" class="guideImage">
+                <h2>Acessar mais informações e excluir elemento</h2>
+                <p>Ao excluir um cliente, todos os projetos relacionados a ele também serão excluidos</p>
+                <h1>Clientes</h1>
+                <p>1)</p>
+                <img src="https://arquive.s3.us-east-2.amazonaws.com/imagensSite/guia5.png" alt="imagem guia" class="guideImage">
+                <p>2)</p>
+                <img src="https://arquive.s3.us-east-2.amazonaws.com/imagensSite/guia6.png" alt="imagem guia" class="guideImage">
+                <h1>Projetos</h1>
+                <img src="https://arquive.s3.us-east-2.amazonaws.com/imagensSite/guia7.png" alt="imagem guia" class="guideImage">
+                <p>2)</p>
+                <img src="https://arquive.s3.us-east-2.amazonaws.com/imagensSite/guia8.png" alt="imagem guia" class="guideImage">
+
+
             </div>
         </div>
 
+        <!-- DOCUMENTAÇÃO-->
+
+        <div class="container popup popupIndex" id="docPopup">
+            <header class="popupHeader">
+                <h2 class="tituloPopup" id='titleDoc'>Documentação</h2>
+                <i class="fas fa-times-circle iconButton delete pointer" id="closeBtnDoc"></i>
+            </header>
+            <div class="contentIndex">
+                <div class="docBox">
+                    <h1>Diagrama identidade-relacionamento</h1>
+                    <img src="https://arquive.s3.us-east-2.amazonaws.com/imagensSite/diagrama.png" alt="diagrama entidade relacionamento" class="docImage" id="entityRelationship">
+                </div>
+                <div class="docBox">
+                    <h1>Diagrama de implantação do sistema</h1>
+                    <img src="https://arquive.s3.us-east-2.amazonaws.com/imagensSite/diagrama+sistema.png" alt="digrama implantação sistema" class="docImage" id="sistemDiagram">
+                </div>
+            </div>
+        </div>
 
 
 <!-- SCRIPT -->

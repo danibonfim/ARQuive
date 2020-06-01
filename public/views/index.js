@@ -1,26 +1,18 @@
-let btnReq = document.getElementById('btnReq');
+function indexBtn (btnId, closeId, popupId){
+    let btn = document.getElementById(btnId);
+    btn.addEventListener('click', event => {
+        toggle(popupId)
+    })
 
-btnReq.addEventListener('click', event => {
-    toggle('requirementsPopup')
-});
-
-let closeBtn = document.getElementById('closeBtnReq');
-closeBtn.addEventListener('click', event => {
-    toggle('requirementsPopup')
-});
-
-
-
-//GUIA DO USUARIO
-
-const btnGuide = document.getElementById("btnGuide");
-btnGuide.addEventListener('click', event=>{
-    toggle('guidePopup');
-});
+    let btnClose = document.getElementById(closeId);
+    btnClose.addEventListener('click', event =>{
+        toggle(popupId)
+    })
+}
 
 
+indexBtn('btnReq', 'closeBtnReq', 'requirementsPopup' );
 
-let closeGuide = document.getElementById('closeBtnGuide');
-closeGuide.addEventListener('click', event =>{
-    toggle('guidePopup');
-});
+indexBtn('btnGuide', 'closeBtnGuide', 'guidePopup' );
+
+indexBtn('btnDoc', 'closeBtnDoc', 'docPopup' );

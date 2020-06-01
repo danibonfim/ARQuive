@@ -41,19 +41,28 @@ function createProjectPopup(project, personId){
   let imageDiv = document.getElementById('imageProj');
   imageDiv.attributes.src.value= '';
 
-    let finishDate = project.finish
-    if(finishDate === null){
-      finishDate  = 'Não definido'
-    }else{
-      finishDate = dateStamp(finishDate)
+  let finishDate = project.finish
+  if(finishDate === null){
+    finishDate  = 'Não definido'
+  }else{
+    finishDate = dateStamp(finishDate)
+  }
+
+  function replaceDot(str){
+    if(str.search(".") != -1){
+      let newStr = str.replace(".", ",")
+      return newStr
     }
+  }
+  let area = `${project.area.toFixed(2)}`;
+  let price = `${project.price.toFixed(2)}`
 
   document.getElementById('projectName').innerHTML = `${project.name}`;
   document.getElementById('start').innerHTML = dateStamp(project.start);
   document.getElementById('finish').innerHTML = finishDate;
-  document.getElementById('area').innerHTML = `${project.area} m²`;
+  document.getElementById('area').innerHTML = `${replaceDot(area)} m²`;
   document.getElementById('services').innerHTML = `${project.services}`;
-  document.getElementById('price').innerHTML = `R$${project.price}`;
+  document.getElementById('price').innerHTML = `R$${replaceDot(price)}`;
   document.getElementById('streetP').innerHTML = `${project.street}`;
   document.getElementById('complementP').innerHTML = `${project.addressCompl}`;
   document.getElementById('districtP').innerHTML = `${project.neighb}`;
