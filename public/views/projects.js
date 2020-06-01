@@ -1,3 +1,16 @@
+
+
+//BTN CLOSE FORM
+
+function closeFormProjects(){
+  toggle('projectForm');
+  fetchClientList();
+}
+
+
+
+
+
 function fetchProjectList(){
   createDivInContainer('projectsContainer')
 
@@ -166,7 +179,7 @@ function createFormProject(){
         </div>
         <div class="formPair">
             <label for="area">Área do projeto (m²)</label>
-            <input class="inputWrite" type="number" name ="area" value="">
+            <input class="inputWrite" type="number" name ="area" value="" step="0.01">
         </div>
         <div class="formPair">
           <label for="services">Serviços prestados</label>
@@ -228,7 +241,8 @@ function createFormProject(){
 
       clientDropBox.innerHTML += clientOption;
     })
-  }))
+  }));
+
 }
 
 
@@ -250,7 +264,17 @@ function newProject(){
           if(response.status === 200){
             successAlertForm('projectForm','Projeto adicionado com sucesso!', 'projeto', 'formProject','addProjectAlert','formProjectHeader', fetchProjectList);
           }else{
-            failureAlertForm('projectForm','Erro ao adicionar projeto!', 'projeto', 'formProject','addProjectAlert','formProjectHeader', fetchProjectList);
+            if(text.error.code === 11000){
+              failureAlertForm('projectForm','Erro ao adicionar projeto: este nome já existe!', 'projeto', 'formProject','addProjectAlert','formProjectHeader', fetchProjectList);
+            }
+            else if( text.error.message === "Cannot read property 'location' of undefined"){
+              failureAlertForm('projectForm','Erro ao adicionar projeto: nenhuma imagem foi carregada!', 'projeto', 'formProject','addProjectAlert','formProjectHeader', fetchProjectList);
+            }
+            else{
+              failureAlertForm('projectForm','Erro ao adicionar projeto!', 'projeto', 'formProject','addProjectAlert','formProjectHeader', fetchProjectList);
+            }
+
+
           }
         }))
       .catch(error => {

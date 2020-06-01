@@ -23,6 +23,7 @@ h2{
     font-weight: 700;
     color: #d64c4c;
     margin:0;
+    font-size: 30px;
 }
 
 h3{
@@ -479,7 +480,7 @@ button:hover{
 }
 
 .popup.active{
-    top: 37.4%;
+    top: 37%;
     visibility: visible;
     opacity: 1;
     transition: 0.5s;
@@ -882,6 +883,7 @@ ul{
 .messageFailure{
     grid-column: 1/ espan 2;
     align-self: center;
+    text-align: center;
 }
 
 .messageSuccess{
@@ -954,7 +956,7 @@ ul{
     width: 80%;
 }
 
-#deleteClientAlert .outBtn:hover{
+.deleteAlert .outBtn:hover{
     background-color:  rgba(229, 229, 229); 
     color:rgba(217,109, 109);
 }

@@ -32,7 +32,6 @@ function alteraTitulo(event){
 //ALERT ADD DATA
 
 function failureAlertForm(toggleFormPopupId, messageString, dataTypeAdd, formId, alertId, headerId){
-    console.log('CONSOLE DENTRO DA FUNCAO FAIL ALERTFORM')
     toggleDisplay(formId);
     toggleDisplay(alertId);
     toggleDisplay(headerId);
@@ -48,7 +47,7 @@ function failureAlertForm(toggleFormPopupId, messageString, dataTypeAdd, formId,
     const btnAddNew = document.getElementById(`btnAdd${dataTypeAdd}`)
     
     btnAddNew.addEventListener('click', (event) => {
-      document.getElementById(formId).reset()
+      // document.getElementById(formId).reset()
 
 
       toggleDisplay(alertId);
@@ -56,8 +55,6 @@ function failureAlertForm(toggleFormPopupId, messageString, dataTypeAdd, formId,
       toggleDisplay(headerId);
       document.getElementById("submit").disabled = false;
       
-      let close = document.getElementById('closeForm');
-      close.addEventListener('click', fetchClientList);
     });
   
     //button out
@@ -92,10 +89,6 @@ function failureAlertForm(toggleFormPopupId, messageString, dataTypeAdd, formId,
       toggleDisplay(formId);
       toggleDisplay(headerId);
       document.getElementById("submit").disabled = false;
-  
-      let close = document.getElementById('closeForm');
-      close.addEventListener('click', fetchClientList);
-  
     });
   
     //button out

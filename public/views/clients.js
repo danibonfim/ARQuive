@@ -1,7 +1,17 @@
 const container = document.getElementById('queryContainer');
 const projects = document.getElementById('projects');
-const url = 'https://arquive.herokuapp.com'
+// const url = 'https://arquive.herokuapp.com'
+const url = 'http://localhost:5000'
 //-------Container content---------------------------------------------------------------
+
+//BTN CLOSE FORM
+
+function closeFormClients(){
+  toggle('clientForm');
+  fetchClientList();
+}
+
+
 
 function fetchClientList(){
   createDivInContainer('personContainer')
@@ -290,7 +300,7 @@ function newClient(){
               'formClient',
               'addClientAlert',
               'formClientHeader', 
-              fetchClientList
+              fetchClientList,
             );
           }
         }))
@@ -318,9 +328,9 @@ function deleteClient(clientId){
       .then(text => {
         console.log(text)
         if(response.status === 200){
-          alertDelete('popupBD','Cliente deletado com sucesso!','infoClient','deleteClientAlert',fetchClientList());
+          alertDelete('popupBD','Cliente deletado com sucesso!','infoClient','deleteClientAlert',fetchClientList);
         }else{
-          alertDelete('popupBD','Ocorreu um erro ao deletar o cliente','infoClient','deleteClientAlert',fetchClientList());
+          alertDelete('popupBD','Ocorreu um erro ao deletar o cliente','infoClient','deleteClientAlert',fetchClientList);
         }
       }))
     .catch(error => {

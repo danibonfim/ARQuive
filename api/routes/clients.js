@@ -6,6 +6,8 @@ const Project = require('../models/projects');
 const Client = require('../models/person');
 const globalFunctions = require('./globalBack');
 
+const {upload} = require('../../config');
+
 //-----OPTIONS--------------------
 
 //get all clients
@@ -83,7 +85,7 @@ router.get('/:clientId', (req, res, next) => {
 
 
 
-router.post('/', (req, res, next) => {
+router.post('/', upload.none(), (req, res, next) => {
     console.log(req.body)
 
     const client= new Client({
