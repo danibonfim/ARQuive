@@ -1308,8 +1308,7 @@ td, th {
 /* POPUP GUIA DO USUARIO */
 
 .guideImage{
-    width: 70%;
-    height: 70%;
+    height: 500px;
 }
 
 .contentIndex {
