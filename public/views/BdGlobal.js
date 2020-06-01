@@ -1,13 +1,19 @@
 //FILTER BY NAME
 
 function filterByName() {
-    var input, filter, i, txtValue;
+    let input, filter, i;
+    let txtValue;
     input = document.getElementById("inputSearch");
     filter = input.value.toUpperCase();
     div = container.getElementsByTagName("div");
-    for (i = 0; i < div.length; i++) {
+    console.log('DIV LOG', div)
+
+    for (i = 1; i < div.length; i++) {
+
+
         h3 = div[i].getElementsByTagName("h3")[0];
         txtValue = h3.textContent || h3.innerText;
+        console.log('TEXTVALUE FOR', txtValue)
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
           div[i].style.display = "";
         } else {

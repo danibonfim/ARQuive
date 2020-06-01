@@ -1,7 +1,7 @@
 const container = document.getElementById('queryContainer');
 const projects = document.getElementById('projects');
-const url = 'https://arquive.herokuapp.com'
-// const url = 'http://localhost:5000'
+// const url = 'https://arquive.herokuapp.com'
+const url = 'http://localhost:5000'
 //-------Container content---------------------------------------------------------------
 
 //BTN CLOSE FORM
