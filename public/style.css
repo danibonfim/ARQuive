@@ -1275,10 +1275,12 @@ p{
     padding-bottom: 5px;
 }
 
-.popupIndex #closeBtn{
+.popupIndex .delete{
     color:#f19274;
     size:20px;
+    justify-self: end;
 }
+
 
 .popupIndex h3{
     padding: 10px 0;
@@ -1298,6 +1300,26 @@ td, th {
   tr:nth-child(even) {
     background-color: #dddddd;
   }
+
+
+/* POPUP GUIA DO USUARIO */
+
+.guideImage{
+    width: 70%;
+    height: 70%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   /* OUTROS HEADERS */
