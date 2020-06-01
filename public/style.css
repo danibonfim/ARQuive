@@ -140,7 +140,7 @@ button:hover{
 .container{
    background-color: #e5e5e5;
    margin-top: 1.5em;
-   height: 210%;
+   height: 700px;
    max-width: 1100px;
    border-radius: 10px;
    display: grid;
